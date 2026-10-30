@@ -1,0 +1,15 @@
+{
+  "name": "kalpana-gold-buyers",
+  "version": "1.0.0",
+  "description": "Kalpana Gold Buyers Private Ltd. - Premium Multi-Page Website for Gold Buying and Bank Pledged Gold Solutions in Guwahati, Assam",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.4.0"
+  }
+}
+
