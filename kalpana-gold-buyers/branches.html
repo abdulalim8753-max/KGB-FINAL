@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -111,7 +111,7 @@
         <a href="index.html" class="brand-logo">
           <img src="images/logo.png" alt="Kalpana Gold Buyers" class="brand-logo-img">
           <div class="brand-text">
-            <span class="brand-name" style="font-size: 1.1rem;">Kalpana Gold</span>
+            <span class="brand-name">Kalpana Gold</span>
             <span class="brand-tagline">Buyers Pvt Ltd</span>
           </div>
         </a>
@@ -134,7 +134,7 @@
   </aside>
 
   <!-- Page Hero -->
-  <section class="page-hero" style="background-image: url('images/branches/guwahati-club.jpg');">
+  <section class="page-hero hero-branches">
     <div class="page-hero-overlay"></div>
     <div class="container">
       <div class="section-tag"><i class="fa-solid fa-store"></i> Direct Showroom Directory</div>
@@ -183,8 +183,8 @@
               <div class="branch-info-row">
                 <i class="fa-solid fa-phone"></i>
                 <span>
-                  <a href="tel:+919181054324" style="color: var(--color-gold); font-weight: 600;">+91 91810 54324</a> / 
-                  <a href="tel:+919181054325" style="color: var(--color-gold); font-weight: 600;">+91 91810 54325</a>
+                  <a href="tel:+919181054324" class="branch-phone-link">+91 91810 54324</a> / 
+                  <a href="tel:+919181054325" class="branch-phone-link">+91 91810 54325</a>
                 </span>
               </div>
               <div class="branch-info-row">
@@ -232,8 +232,8 @@
               <div class="branch-info-row">
                 <i class="fa-solid fa-phone"></i>
                 <span>
-                  <a href="tel:+919181054325" style="color: var(--color-gold); font-weight: 600;">+91 91810 54325</a> / 
-                  <a href="tel:+919181054326" style="color: var(--color-gold); font-weight: 600;">+91 91810 54326</a>
+                  <a href="tel:+919181054325" class="branch-phone-link">+91 91810 54325</a> / 
+                  <a href="tel:+919181054326" class="branch-phone-link">+91 91810 54326</a>
                 </span>
               </div>
               <div class="branch-info-row">
@@ -277,7 +277,7 @@
       </div>
 
       <!-- Map Switcher Tabs -->
-      <div style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap;">
+      <div class="cta-button-group branch-map-tabs-group">
         <button type="button" class="btn btn-primary branch-map-btn active" data-branch="guwahati-club">
           <i class="fa-solid fa-location-dot"></i> Guwahati Club Branch
         </button>
@@ -287,13 +287,13 @@
       </div>
 
       <!-- Map Embed Container -->
-      <div style="position: relative; height: 420px; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid rgba(212, 175, 114, 0.35); box-shadow: var(--shadow-lg);">
+      <div class="branch-map-container">
         <iframe
           id="branch-map-embed"
+          class="branch-map-frame"
           src="https://maps.google.com/maps?q=Guwahati+Club+GNB+Road+Guwahati+Assam&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
           width="100%"
           height="100%"
-          style="border:0; filter: invert(90%) hue-rotate(180deg);"
           allowfullscreen=""
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
@@ -348,7 +348,7 @@
     <div class="container">
       <div class="section-tag"><i class="fa-solid fa-door-open"></i> Walk-Ins Welcome</div>
       <h2 class="section-title">Visit Us Today in <span class="gold-gradient-text">Guwahati</span></h2>
-      <p class="section-subtitle" style="margin: 0 auto; max-width: 650px;">
+      <p class="section-subtitle final-cta-subtitle">
         No prior appointment necessary. Walk into our Guwahati Club or Adabari branch between 10:00 AM and 8:00 PM.
       </p>
 
@@ -358,7 +358,7 @@
         <a href="tel:+919181054326" class="btn btn-call btn-lg"><i class="fa-solid fa-phone"></i> +91 91810 54326</a>
       </div>
 
-      <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+      <div class="cta-button-group">
         <a href="cash-for-gold.html" class="btn btn-primary btn-lg"><i class="fa-solid fa-calculator"></i> Calculate Gold Value</a>
         <a href="contact.html" class="btn btn-secondary btn-lg"><i class="fa-solid fa-envelope"></i> Send an Inquiry</a>
       </div>
@@ -370,7 +370,7 @@
     <div class="container">
       <div class="footer-grid">
         <div>
-          <a href="index.html" class="brand-logo" style="margin-bottom: 1.25rem;">
+          <a href="index.html" class="brand-logo footer-brand-logo">
             <img src="images/logo.png" alt="Kalpana Gold Buyers" class="brand-logo-img">
             <div class="brand-text">
               <span class="brand-name">Kalpana Gold Buyers</span>
@@ -428,7 +428,7 @@
               Adabari, Near NCS Square Mall, Guwahati - 781014, Assam
             </p>
           </div>
-          <div style="margin-top: 1rem; font-size: 0.85rem; color: var(--color-gold);">
+          <div class="footer-hours">
             <i class="fa-solid fa-clock"></i> Hours: 10:00 AM – 8:00 PM (All 7 Days)
           </div>
         </div>

@@ -2402,7 +2402,359 @@ textarea.form-control {
 }
 
 /* --------------------------------------------------------------------------
-   21. RESPONSIVE DESIGN (MEDIA QUERIES)
+   21. EXTRACTED UTILITIES & ZERO-INLINE-STYLES ARCHITECTURE
+   -------------------------------------------------------------------------- */
+
+/* Mobile Nav Drawer Header Brand Styling (replaces inline style at line 138) */
+.mobile-nav-header .brand-name {
+  font-size: 1.1rem;
+}
+
+/* Page Hero Backgrounds (External CSS classes replacing inline background-image) */
+.hero-home {
+  background-image: url('../images/hero.jpg');
+}
+.hero-services {
+  background-image: url('../images/banner-wide.jpg');
+}
+.hero-cash-for-gold {
+  background-image: url('../images/hero.jpg');
+}
+.hero-branches {
+  background-image: url('../images/branches/guwahati-club.jpg');
+}
+.hero-gallery {
+  background-image: url('../images/banner-wide.jpg');
+}
+.hero-about {
+  background-image: url('../images/about.jpg');
+}
+.hero-contact {
+  background-image: url('../images/banner-wide.jpg');
+}
+
+/* Service Badges */
+.service-badge-gold {
+  background: var(--gold-gradient);
+  color: #000;
+}
+
+/* General Layout Utilities */
+.text-center {
+  text-align: center;
+}
+.section-action-center {
+  text-align: center;
+  margin-top: 3.5rem;
+}
+.section-action-center-sm {
+  text-align: center;
+  margin-top: 2.5rem;
+}
+.final-cta-subtitle {
+  margin: 0 auto;
+  max-width: 650px;
+}
+.footer-brand-logo {
+  margin-bottom: 1.25rem;
+}
+.footer-hours {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: var(--color-gold);
+}
+.cta-button-group {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.cta-button-group-hero {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+.breadcrumb-hero {
+  margin-top: 2rem;
+}
+
+/* Form, Calculator & Layout Micro-Utilities */
+.calc-input-hint {
+  color: var(--color-text-muted);
+  font-size: 0.78rem;
+  margin-top: 0.35rem;
+  display: block;
+}
+.calc-cta-wrap {
+  margin-top: 1.5rem;
+}
+.story-layout-centered {
+  align-items: center;
+}
+.section-subtitle-spaced {
+  margin-bottom: 1.8rem;
+}
+.contact-intro-title {
+  font-size: 2.1rem;
+  margin-bottom: 0.8rem;
+}
+.contact-intro-desc {
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+  margin-bottom: 1.8rem;
+}
+.contact-address-lead {
+  margin-bottom: 0.5rem;
+}
+.form-submit-btn {
+  margin-top: 1rem;
+}
+.form-privacy-note {
+  font-size: 0.76rem;
+  color: #777777;
+  text-align: center;
+  margin-top: 0.85rem;
+}
+.section-padding-contact-map {
+  padding-top: 2rem;
+}
+.modal-success-title {
+  font-size: 1.6rem;
+  color: #ffffff;
+  margin-bottom: 0.6rem;
+}
+.modal-success-desc {
+  color: #b0b0b0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+.text-white {
+  color: #ffffff !important;
+}
+
+/* Pledged Gold Card Grid (Fully Responsive) */
+.pledged-card-full {
+  grid-column: 1 / -1;
+}
+.pledged-card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 2rem;
+  align-items: center;
+  padding: 1rem;
+}
+.pledged-img-wrapper {
+  height: 100%;
+  min-height: 260px;
+  border-radius: var(--radius-md);
+}
+.pledged-content {
+  padding: 0;
+}
+.pledged-title {
+  font-size: 1.6rem;
+}
+.pledged-features-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+.pledged-actions {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Comparison Table (Fully Responsive with Touch Scroll) */
+.comparison-table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  background: #161616;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(212, 175, 114, 0.25);
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 100%;
+}
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 650px;
+  font-size: 0.95rem;
+}
+.comparison-header-row {
+  border-bottom: 2px solid rgba(212, 175, 114, 0.4);
+  text-align: left;
+}
+.comparison-th {
+  padding: 1rem;
+  color: var(--color-white);
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+}
+.comparison-th-gold {
+  color: var(--color-gold);
+}
+.comparison-th-muted {
+  color: #888888;
+}
+.comparison-row {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.comparison-td-feature {
+  padding: 1.1rem;
+  color: var(--color-white);
+  font-weight: 600;
+}
+.comparison-td-check {
+  padding: 1.1rem;
+  color: #2ecc71;
+}
+.comparison-td-cross {
+  padding: 1.1rem;
+  color: #e74c3c;
+}
+
+/* Document Checklist (Cash for Gold Page) */
+.doc-checklist-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.doc-checklist-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background: #1a1a1a;
+  padding: 1.2rem;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(212, 175, 114, 0.2);
+  transition: border-color var(--transition-fast);
+}
+.doc-checklist-item:hover {
+  border-color: rgba(212, 175, 114, 0.45);
+}
+.doc-check-icon {
+  color: var(--color-gold);
+  font-size: 1.4rem;
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+.doc-check-title {
+  color: var(--color-white);
+  font-size: 1.05rem;
+  display: block;
+}
+.doc-check-desc {
+  color: #a8a8a8;
+  font-size: 0.9rem;
+  margin-top: 2px;
+}
+
+/* Mission & Vision Grid */
+.mission-vision-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.5rem;
+}
+.pillar-card-accent {
+  border-top: 4px solid var(--color-gold);
+}
+.pillar-title-lg {
+  font-size: 1.5rem;
+}
+.story-text-lead {
+  color: #d1d1d1;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  margin-bottom: 1.3rem;
+}
+.story-text {
+  color: #b0b0b0;
+  font-size: 0.95rem;
+  line-height: 1.75;
+  margin-bottom: 1.3rem;
+}
+.story-text:last-of-type {
+  margin-bottom: 0;
+}
+
+/* Branch Map & Contact Enhancements */
+.branch-phone-link {
+  color: var(--color-gold);
+  font-weight: 600;
+}
+.branch-map-tabs-group {
+  margin-bottom: 2rem;
+}
+.branch-map-container {
+  position: relative;
+  height: 420px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid rgba(212, 175, 114, 0.35);
+  box-shadow: var(--shadow-lg);
+}
+.branch-map-frame {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  filter: invert(90%) hue-rotate(180deg);
+}
+.contact-map-container {
+  position: relative;
+  height: 380px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid rgba(212, 175, 114, 0.35);
+}
+
+/* WhatsApp Link Accent */
+.contact-card-icon-whatsapp {
+  background: rgba(37, 211, 102, 0.15);
+  border-color: rgba(37, 211, 102, 0.4);
+  color: #25d366;
+}
+.contact-whatsapp-link {
+  color: #25d366;
+  font-weight: 600;
+}
+
+/* Modal Feedback Box */
+.modal-summary-box {
+  background: #111;
+  border: 1px solid rgba(212, 175, 114, 0.3);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  margin-bottom: 1.8rem;
+  text-align: left;
+  font-size: 0.88rem;
+}
+.modal-summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.4rem;
+}
+.modal-summary-row:last-child {
+  margin-bottom: 0;
+}
+.modal-ref-label {
+  color: #888888;
+}
+.modal-ref-value {
+  color: var(--color-gold);
+}
+.modal-help-link {
+  color: #2ecc71;
+  font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   22. RESPONSIVE DESIGN (MEDIA QUERIES)
    -------------------------------------------------------------------------- */
 @media (max-width: 1080px) {
   .nav-menu {
@@ -2791,6 +3143,63 @@ textarea.form-control {
 
   .comparison-table {
     min-width: 560px;
+  }
+
+  /* Pledged Card Mobile Optimization */
+  .pledged-card-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
+    padding: 0.75rem !important;
+  }
+  .pledged-img-wrapper {
+    min-height: 190px !important;
+    height: 190px !important;
+  }
+  .pledged-features-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.4rem !important;
+  }
+  .pledged-actions {
+    flex-direction: column;
+  }
+  .pledged-actions .btn {
+    width: 100%;
+  }
+
+  /* Mission & Vision Mobile */
+  .mission-vision-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
+  }
+
+  /* Document Checklist Mobile */
+  .doc-checklist-item {
+    padding: 0.95rem !important;
+    gap: 0.75rem !important;
+  }
+  .doc-check-title {
+    font-size: 0.95rem !important;
+  }
+  .doc-check-desc {
+    font-size: 0.82rem !important;
+  }
+
+  /* Maps Mobile */
+  .branch-map-container,
+  .contact-map-container {
+    height: 280px !important;
+  }
+
+  /* CTA Buttons Mobile */
+  .cta-button-group,
+  .cta-phones-list {
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100%;
+  }
+  .cta-phones-list .btn {
+    width: 100% !important;
+    max-width: 340px !important;
   }
 
   /* --- Footer Mobile --- */
