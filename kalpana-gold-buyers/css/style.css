@@ -82,7 +82,6 @@ html {
   font-size: 16px;
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
-  text-size-adjust: 100%;
 }
 
 body {
@@ -111,11 +110,15 @@ a {
   transition: color var(--transition-fast);
 }
 
-ul, ol {
+ul,
+ol {
   list-style: none;
 }
 
-button, input, select, textarea {
+button,
+input,
+select,
+textarea {
   font-family: inherit;
   font-size: inherit;
   outline: none;
@@ -139,7 +142,12 @@ button {
 /* --------------------------------------------------------------------------
    3. TYPOGRAPHY & UTILITY CLASSES
    -------------------------------------------------------------------------- */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-serif);
   color: var(--color-white);
   line-height: 1.25;
@@ -156,6 +164,7 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  color: transparent;
   display: inline-block;
 }
 
@@ -375,8 +384,8 @@ h1, h2, h3, h4, h5, h6 {
   left: 0;
   width: 100%;
   background: rgba(15, 15, 15, 0.94);
-  backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(212, 175, 114, 0.22);
   z-index: 1000;
   transition: all var(--transition-normal);
@@ -687,12 +696,10 @@ h1, h2, h3, h4, h5, h6 {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    90deg,
-    rgba(8, 8, 8, 0.94) 0%,
-    rgba(14, 14, 14, 0.86) 50%,
-    rgba(18, 18, 18, 0.72) 100%
-  );
+  background: linear-gradient(90deg,
+      rgba(8, 8, 8, 0.94) 0%,
+      rgba(14, 14, 14, 0.86) 50%,
+      rgba(18, 18, 18, 0.72) 100%);
   z-index: 1;
 }
 
@@ -771,18 +778,18 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.3;
 }
 
-/* Inner Page Hero */
+/* Inner Page Hero - Large Premium Gold Background with Luxury Dark Overlay */
 .page-hero {
   position: relative;
-  min-height: 48vh;
+  min-height: 52vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 6.5rem 0 5rem 0;
   background-color: #0c0c0c;
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
+  padding: 5.5rem 0 4.5rem 0;
   border-bottom: 1px solid rgba(212, 175, 114, 0.28);
   text-align: center;
   overflow: hidden;
@@ -794,12 +801,10 @@ h1, h2, h3, h4, h5, h6 {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    180deg,
-    rgba(8, 8, 8, 0.90) 0%,
-    rgba(14, 14, 14, 0.82) 50%,
-    rgba(10, 10, 10, 0.95) 100%
-  );
+  background: linear-gradient(180deg,
+      rgba(8, 8, 8, 0.88) 0%,
+      rgba(14, 14, 14, 0.80) 50%,
+      rgba(10, 10, 10, 0.94) 100%);
   z-index: 1;
 }
 
@@ -808,16 +813,27 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 2;
 }
 
+.page-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
 .page-hero-title {
-  font-size: clamp(2.2rem, 4.5vw, 3.4rem);
-  margin-bottom: 1rem;
+  font-size: clamp(2.3rem, 4.6vw, 3.6rem);
+  margin-bottom: 1.1rem;
+  font-weight: 800;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
 }
 
 .page-hero-desc {
-  font-size: 1.1rem;
-  color: var(--color-text-secondary);
-  max-width: 680px;
-  margin: 0 auto 1.5rem auto;
+  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  color: #e0e0e0;
+  max-width: 760px;
+  margin: 0 auto 1.8rem auto;
+  line-height: 1.65;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85);
 }
 
 .breadcrumb {
@@ -825,8 +841,15 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   justify-content: center;
   gap: 0.6rem;
-  font-size: 0.85rem;
-  color: var(--color-text-muted);
+  font-size: 0.88rem;
+  color: #b0b0b0;
+  background: rgba(15, 15, 15, 0.7);
+  display: inline-flex;
+  padding: 0.45rem 1.35rem;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(212, 175, 114, 0.28);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
 }
 
 .breadcrumb a {
@@ -1993,7 +2016,7 @@ h1, h2, h3, h4, h5, h6 {
   display: none;
 }
 
-.form-control.is-invalid ~ .invalid-feedback {
+.form-control.is-invalid~.invalid-feedback {
   display: block;
 }
 
@@ -2404,359 +2427,7 @@ textarea.form-control {
 }
 
 /* --------------------------------------------------------------------------
-   21. EXTRACTED UTILITIES & ZERO-INLINE-STYLES ARCHITECTURE
-   -------------------------------------------------------------------------- */
-
-/* Mobile Nav Drawer Header Brand Styling (replaces inline style at line 138) */
-.mobile-nav-header .brand-name {
-  font-size: 1.1rem;
-}
-
-/* Page Hero Backgrounds (External CSS classes replacing inline background-image) */
-.hero-home {
-  background-image: url('../images/hero.jpg');
-}
-.hero-services {
-  background-image: url('../images/banner-wide.jpg');
-}
-.hero-cash-for-gold {
-  background-image: url('../images/hero.jpg');
-}
-.hero-branches {
-  background-image: url('../images/branches/guwahati-club.jpg');
-}
-.hero-gallery {
-  background-image: url('../images/banner-wide.jpg');
-}
-.hero-about {
-  background-image: url('../images/about.jpg');
-}
-.hero-contact {
-  background-image: url('../images/banner-wide.jpg');
-}
-
-/* Service Badges */
-.service-badge-gold {
-  background: var(--gold-gradient);
-  color: #000;
-}
-
-/* General Layout Utilities */
-.text-center {
-  text-align: center;
-}
-.section-action-center {
-  text-align: center;
-  margin-top: 3.5rem;
-}
-.section-action-center-sm {
-  text-align: center;
-  margin-top: 2.5rem;
-}
-.final-cta-subtitle {
-  margin: 0 auto;
-  max-width: 650px;
-}
-.footer-brand-logo {
-  margin-bottom: 1.25rem;
-}
-.footer-hours {
-  margin-top: 1rem;
-  font-size: 0.85rem;
-  color: var(--color-gold);
-}
-.cta-button-group {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-.cta-button-group-hero {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-  margin-top: 1.5rem;
-}
-.breadcrumb-hero {
-  margin-top: 2rem;
-}
-
-/* Form, Calculator & Layout Micro-Utilities */
-.calc-input-hint {
-  color: var(--color-text-muted);
-  font-size: 0.78rem;
-  margin-top: 0.35rem;
-  display: block;
-}
-.calc-cta-wrap {
-  margin-top: 1.5rem;
-}
-.story-layout-centered {
-  align-items: center;
-}
-.section-subtitle-spaced {
-  margin-bottom: 1.8rem;
-}
-.contact-intro-title {
-  font-size: 2.1rem;
-  margin-bottom: 0.8rem;
-}
-.contact-intro-desc {
-  color: var(--color-text-secondary);
-  font-size: 0.95rem;
-  margin-bottom: 1.8rem;
-}
-.contact-address-lead {
-  margin-bottom: 0.5rem;
-}
-.form-submit-btn {
-  margin-top: 1rem;
-}
-.form-privacy-note {
-  font-size: 0.76rem;
-  color: #777777;
-  text-align: center;
-  margin-top: 0.85rem;
-}
-.section-padding-contact-map {
-  padding-top: 2rem;
-}
-.modal-success-title {
-  font-size: 1.6rem;
-  color: #ffffff;
-  margin-bottom: 0.6rem;
-}
-.modal-success-desc {
-  color: #b0b0b0;
-  font-size: 0.95rem;
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
-}
-.text-white {
-  color: #ffffff !important;
-}
-
-/* Pledged Gold Card Grid (Fully Responsive) */
-.pledged-card-full {
-  grid-column: 1 / -1;
-}
-.pledged-card-grid {
-  display: grid;
-  grid-template-columns: 1fr 1.4fr;
-  gap: 2rem;
-  align-items: center;
-  padding: 1rem;
-}
-.pledged-img-wrapper {
-  height: 100%;
-  min-height: 260px;
-  border-radius: var(--radius-md);
-}
-.pledged-content {
-  padding: 0;
-}
-.pledged-title {
-  font-size: 1.6rem;
-}
-.pledged-features-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.5rem;
-}
-.pledged-actions {
-  margin-top: 1.5rem;
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-/* Comparison Table (Fully Responsive with Touch Scroll) */
-.comparison-table-wrapper {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  background: #161616;
-  border-radius: var(--radius-lg);
-  border: 1px solid rgba(212, 175, 114, 0.25);
-  padding: 1.5rem;
-  width: 100%;
-  max-width: 100%;
-}
-.comparison-table {
-  width: 100%;
-  border-collapse: collapse;
-  min-width: 650px;
-  font-size: 0.95rem;
-}
-.comparison-header-row {
-  border-bottom: 2px solid rgba(212, 175, 114, 0.4);
-  text-align: left;
-}
-.comparison-th {
-  padding: 1rem;
-  color: var(--color-white);
-  font-family: var(--font-serif);
-  font-size: 1.1rem;
-}
-.comparison-th-gold {
-  color: var(--color-gold);
-}
-.comparison-th-muted {
-  color: #888888;
-}
-.comparison-row {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-}
-.comparison-td-feature {
-  padding: 1.1rem;
-  color: var(--color-white);
-  font-weight: 600;
-}
-.comparison-td-check {
-  padding: 1.1rem;
-  color: #2ecc71;
-}
-.comparison-td-cross {
-  padding: 1.1rem;
-  color: #e74c3c;
-}
-
-/* Document Checklist (Cash for Gold Page) */
-.doc-checklist-container {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-.doc-checklist-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-  background: #1a1a1a;
-  padding: 1.2rem;
-  border-radius: var(--radius-md);
-  border: 1px solid rgba(212, 175, 114, 0.2);
-  transition: border-color var(--transition-fast);
-}
-.doc-checklist-item:hover {
-  border-color: rgba(212, 175, 114, 0.45);
-}
-.doc-check-icon {
-  color: var(--color-gold);
-  font-size: 1.4rem;
-  margin-top: 3px;
-  flex-shrink: 0;
-}
-.doc-check-title {
-  color: var(--color-white);
-  font-size: 1.05rem;
-  display: block;
-}
-.doc-check-desc {
-  color: #a8a8a8;
-  font-size: 0.9rem;
-  margin-top: 2px;
-}
-
-/* Mission & Vision Grid */
-.mission-vision-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2.5rem;
-}
-.pillar-card-accent {
-  border-top: 4px solid var(--color-gold);
-}
-.pillar-title-lg {
-  font-size: 1.5rem;
-}
-.story-text-lead {
-  color: #d1d1d1;
-  font-size: 1.05rem;
-  line-height: 1.8;
-  margin-bottom: 1.3rem;
-}
-.story-text {
-  color: #b0b0b0;
-  font-size: 0.95rem;
-  line-height: 1.75;
-  margin-bottom: 1.3rem;
-}
-.story-text:last-of-type {
-  margin-bottom: 0;
-}
-
-/* Branch Map & Contact Enhancements */
-.branch-phone-link {
-  color: var(--color-gold);
-  font-weight: 600;
-}
-.branch-map-tabs-group {
-  margin-bottom: 2rem;
-}
-.branch-map-container {
-  position: relative;
-  height: 420px;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  border: 1px solid rgba(212, 175, 114, 0.35);
-  box-shadow: var(--shadow-lg);
-}
-.branch-map-frame {
-  width: 100%;
-  height: 100%;
-  border: 0;
-  filter: invert(90%) hue-rotate(180deg);
-}
-.contact-map-container {
-  position: relative;
-  height: 380px;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  border: 1px solid rgba(212, 175, 114, 0.35);
-}
-
-/* WhatsApp Link Accent */
-.contact-card-icon-whatsapp {
-  background: rgba(37, 211, 102, 0.15);
-  border-color: rgba(37, 211, 102, 0.4);
-  color: #25d366;
-}
-.contact-whatsapp-link {
-  color: #25d366;
-  font-weight: 600;
-}
-
-/* Modal Feedback Box */
-.modal-summary-box {
-  background: #111;
-  border: 1px solid rgba(212, 175, 114, 0.3);
-  border-radius: var(--radius-md);
-  padding: 1rem;
-  margin-bottom: 1.8rem;
-  text-align: left;
-  font-size: 0.88rem;
-}
-.modal-summary-row {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 0.4rem;
-}
-.modal-summary-row:last-child {
-  margin-bottom: 0;
-}
-.modal-ref-label {
-  color: #888888;
-}
-.modal-ref-value {
-  color: var(--color-gold);
-}
-.modal-help-link {
-  color: #2ecc71;
-  font-weight: 600;
-}
-
-/* --------------------------------------------------------------------------
-   22. RESPONSIVE DESIGN (MEDIA QUERIES)
+   21. RESPONSIVE DESIGN (MEDIA QUERIES)
    -------------------------------------------------------------------------- */
 @media (max-width: 1080px) {
   .nav-menu {
@@ -2785,544 +2456,91 @@ textarea.form-control {
 
 @media (max-width: 768px) {
   :root {
-    --header-height: 64px;
-  }
-
-  /* Prevent any horizontal overflow */
-  html, body {
-    overflow-x: hidden !important;
-    max-width: 100vw !important;
-    width: 100% !important;
-  }
-
-  /* Compact padding on mobile */
-  .container {
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
+    --header-height: 72px;
   }
 
   .top-bar {
-    display: none !important; /* Hide top bar on mobile for cleaner viewport */
+    display: none;
+    /* Hide top bar on mobile for cleaner viewport */
   }
 
   .section-padding {
-    padding: 3rem 0;
+    padding: 3.75rem 0;
   }
 
-  /* --- Navigation Header Mobile Fix --- */
-  .navbar {
-    height: var(--header-height);
-    gap: 0.5rem;
-    justify-content: space-between;
-  }
-
-  .brand-logo {
-    gap: 0.65rem;
-    min-width: 0;
-    flex: 1 1 auto;
-    max-width: calc(100% - 95px);
-    overflow: hidden;
-  }
-
-  .brand-logo-img {
-    width: 40px;
-    height: 40px;
-    min-width: 40px;
-    border-radius: 50%;
-  }
-
-  .brand-text {
-    min-width: 0;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  .brand-name {
-    font-size: 0.98rem;
-    line-height: 1.15;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    letter-spacing: 0.02em;
-  }
-
-  .brand-tagline {
-    font-size: 0.58rem;
-    letter-spacing: 0.1em;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    margin-top: 2px;
-  }
-
-  .nav-actions {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    flex-shrink: 0;
-  }
-
-  .nav-actions .btn-whatsapp {
-    display: none !important;
-  }
-
-  /* Elegant Circular Call Icon Button on mobile - Prevents header collision */
-  .btn-call {
-    width: 38px !important;
-    height: 38px !important;
-    min-width: 38px !important;
-    padding: 0 !important;
-    border-radius: 50% !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    font-size: 0 !important; /* Gracefully hides "Call Us" text node */
-    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.35);
-    flex-shrink: 0;
-  }
-
-  .btn-call i {
-    font-size: 0.95rem !important;
-    margin: 0 !important;
-    display: block;
-    line-height: 1;
-  }
-
-  .btn-call span {
-    display: none !important;
-  }
-
-  .call-dropdown-menu {
-    right: 0;
-    max-width: calc(100vw - 2rem);
-    min-width: 240px;
-  }
-
-  .hamburger-btn {
-    width: 38px;
-    height: 38px;
-    min-width: 38px;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 4px;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(212, 175, 114, 0.25);
-    border-radius: var(--radius-sm);
-    flex-shrink: 0;
-  }
-
-  .hamburger-btn .hamburger-line {
-    width: 18px;
-    height: 2px;
-    background-color: var(--color-gold);
-    transition: all var(--transition-normal);
-  }
-
-  .hamburger-btn.active .hamburger-line:nth-child(1) {
-    transform: translateY(6px) rotate(45deg);
-  }
-  .hamburger-btn.active .hamburger-line:nth-child(2) {
-    opacity: 0;
-  }
-  .hamburger-btn.active .hamburger-line:nth-child(3) {
-    transform: translateY(-6px) rotate(-45deg);
-  }
-
-  /* --- Hero Section Mobile Fix --- */
   .hero-section {
-    min-height: auto;
-    padding: 3.5rem 0 2.5rem;
-  }
-
-  .hero-title {
-    font-size: clamp(1.85rem, 7vw, 2.6rem);
-    line-height: 1.2;
-    margin-bottom: 1rem;
-    word-break: break-word;
-  }
-
-  .hero-subtitle {
-    font-size: 0.96rem;
-    line-height: 1.6;
-    margin-bottom: 1.75rem;
+    min-height: 75vh;
+    padding: 4rem 0;
   }
 
   .hero-cta-group {
     flex-direction: column;
     width: 100%;
-    gap: 0.85rem;
-    margin-bottom: 2.25rem;
   }
 
   .hero-cta-group .btn {
     width: 100%;
-    justify-content: center;
-    padding: 0.95rem 1.5rem;
-    font-size: 1rem;
   }
 
-  .hero-badges-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 0.75rem;
-    padding-top: 1.5rem;
+  .nav-actions .btn-whatsapp {
+    display: none;
+    /* Keep call button visible in header, WhatsApp available in floating action */
   }
 
-  .hero-badge-item {
-    padding: 0.65rem 0.75rem;
-    gap: 0.55rem;
-  }
-
-  .hero-badge-icon {
-    font-size: 1.15rem;
-  }
-
-  .hero-badge-text h4 {
-    font-size: 0.78rem;
-    line-height: 1.25;
-  }
-
-  .hero-badge-text p {
-    font-size: 0.68rem;
-    line-height: 1.2;
-  }
-
-  /* --- Grids Responsiveness --- */
-  .pillars-grid,
-  .services-grid,
-  .branches-grid,
-  .testimonials-grid,
-  .values-grid,
-  .process-flow {
-    grid-template-columns: 1fr !important;
-    gap: 1.35rem;
-  }
-
-  .pillar-card,
-  .testimonial-card,
-  .value-card,
-  .process-step-card {
-    padding: 1.6rem 1.25rem;
-  }
-
-  .service-card {
-    border-radius: var(--radius-md);
-  }
-
-  .service-image-wrapper {
-    height: 190px;
-  }
-
-  .service-content {
-    padding: 1.5rem 1.25rem;
-  }
-
-  .trust-stats-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 0.85rem;
-  }
-
-  .trust-stat-card {
-    padding: 1.25rem 0.75rem;
-  }
-
-  .stat-number {
-    font-size: 1.75rem;
-  }
-
-  .stat-label {
-    font-size: 0.82rem;
-  }
-
-  .branch-image-wrapper {
-    height: 190px;
-  }
-
-  .branch-content {
-    padding: 1.5rem 1.25rem;
-  }
-
-  .branch-action-buttons {
-    grid-template-columns: 1fr;
-    gap: 0.65rem;
-  }
-
-  /* --- Calculator Mobile --- */
-  .calculator-container {
-    padding: 1.6rem 1rem;
-  }
-
-  .calc-grid {
-    grid-template-columns: 1fr;
-    gap: 1.75rem;
-  }
-
-  .purity-pills-selector {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.45rem;
-  }
-
-  .purity-pill-btn {
-    padding: 0.55rem 0.35rem;
-  }
-
-  .purity-pill-btn .karat {
-    font-size: 0.88rem;
-  }
-
-  .purity-pill-btn .percent {
-    font-size: 0.65rem;
-  }
-
-  .calc-result-card {
-    padding: 1.5rem 1.15rem;
-  }
-
-  .calc-total-amount {
-    font-size: 2.1rem;
-  }
-
-  /* --- Forms & Contact Mobile --- */
   .form-row {
     grid-template-columns: 1fr;
-    gap: 1rem;
   }
 
-  .contact-layout {
-    grid-template-columns: 1fr;
-    gap: 1.75rem;
-  }
-
-  .contact-info-card,
-  .contact-form-box {
-    padding: 1.5rem 1.15rem;
-  }
-
-  /* Prevent iOS zoom on input focus */
-  input, select, textarea {
-    font-size: 16px !important;
-  }
-
-  /* --- Gallery Grid Mobile --- */
-  .gallery-grid {
-    grid-template-columns: 1fr !important;
-    gap: 1rem;
-  }
-
-  .gallery-item {
-    height: 220px;
-  }
-
-  .gallery-filters {
-    gap: 0.45rem;
-    justify-content: flex-start;
-    overflow-x: auto;
-    padding-bottom: 0.5rem;
-    flex-wrap: nowrap;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .filter-btn {
-    padding: 0.45rem 0.95rem;
-    font-size: 0.82rem;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-
-  /* --- Table Responsive --- */
-  .comparison-table-wrapper {
-    width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    border-radius: var(--radius-md);
-    border: 1px solid rgba(212, 175, 114, 0.25);
-    margin: 1.25rem 0;
-  }
-
-  .comparison-table {
-    min-width: 560px;
-  }
-
-  /* Pledged Card Mobile Optimization */
-  .pledged-card-grid {
-    grid-template-columns: 1fr !important;
-    gap: 1.25rem !important;
-    padding: 0.75rem !important;
-  }
-  .pledged-img-wrapper {
-    min-height: 190px !important;
-    height: 190px !important;
-  }
-  .pledged-features-grid {
-    grid-template-columns: 1fr !important;
-    gap: 0.4rem !important;
-  }
-  .pledged-actions {
-    flex-direction: column;
-  }
-  .pledged-actions .btn {
-    width: 100%;
-  }
-
-  /* Mission & Vision Mobile */
-  .mission-vision-grid {
-    grid-template-columns: 1fr !important;
-    gap: 1.25rem !important;
-  }
-
-  /* Document Checklist Mobile */
-  .doc-checklist-item {
-    padding: 0.95rem !important;
-    gap: 0.75rem !important;
-  }
-  .doc-check-title {
-    font-size: 0.95rem !important;
-  }
-  .doc-check-desc {
-    font-size: 0.82rem !important;
-  }
-
-  /* Maps Mobile */
-  .branch-map-container,
-  .contact-map-container {
-    height: 280px !important;
-  }
-
-  /* CTA Buttons Mobile */
-  .cta-button-group,
-  .cta-phones-list {
-    flex-direction: column !important;
-    align-items: center !important;
-    width: 100%;
-  }
-  .cta-phones-list .btn {
-    width: 100% !important;
-    max-width: 340px !important;
-  }
-
-  /* --- Footer Mobile --- */
   .footer-grid {
     grid-template-columns: 1fr;
-    gap: 2rem;
   }
 
   .footer-bottom-bar .container {
     flex-direction: column;
     text-align: center;
-    gap: 0.85rem;
   }
 
-  .footer-bottom-links {
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 1rem;
+  .branches-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .branch-action-buttons {
+    grid-template-columns: 1fr;
   }
 
   .lightbox-nav {
     display: none;
-  }
-
-  /* Floating action buttons */
-  .floating-actions {
-    bottom: 16px;
-    right: 16px;
-    gap: 10px;
-  }
-
-  .floating-btn {
-    width: 44px;
-    height: 44px;
-    font-size: 1.2rem;
+    /* Swipe or tap on mobile */
   }
 }
 
 @media (max-width: 480px) {
-  :root {
-    --header-height: 60px;
-  }
-
-  .container {
-    padding-left: 0.85rem !important;
-    padding-right: 0.85rem !important;
-  }
-
-  .brand-logo {
-    gap: 0.5rem;
-    max-width: calc(100% - 85px);
-  }
-
-  .brand-logo-img {
-    width: 36px;
-    height: 36px;
-    min-width: 36px;
-  }
-
   .brand-name {
-    font-size: 0.9rem;
+    font-size: 1.05rem;
   }
 
   .brand-tagline {
-    font-size: 0.54rem;
-    letter-spacing: 0.08em;
-  }
-
-  .btn-call {
-    width: 35px !important;
-    height: 35px !important;
-    min-width: 35px !important;
-  }
-
-  .hamburger-btn {
-    width: 35px;
-    height: 35px;
-    min-width: 35px;
+    font-size: 0.6rem;
   }
 
   .section-title {
-    font-size: 1.7rem;
-    line-height: 1.25;
+    font-size: 1.85rem;
   }
 
-  .section-subtitle {
-    font-size: 0.72rem;
-    padding: 0.3rem 0.75rem;
+  .calculator-container,
+  .contact-form-box {
+    padding: 1.6rem 1.2rem;
   }
 
-  .hero-badges-grid {
-    grid-template-columns: 1fr;
-    gap: 0.5rem;
+  .floating-actions {
+    bottom: 18px;
+    right: 18px;
+    gap: 10px;
   }
 
-  .trust-stats-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .purity-pills-selector {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .calc-breakdown-row {
-    font-size: 0.82rem;
+  .floating-btn {
+    width: 48px;
+    height: 48px;
+    font-size: 1.25rem;
   }
 }
-
-@media (max-width: 360px) {
-  .brand-name {
-    font-size: 0.82rem;
-  }
-
-  .brand-tagline {
-    font-size: 0.5rem;
-  }
-
-  .brand-logo-img {
-    width: 32px;
-    height: 32px;
-    min-width: 32px;
-  }
-}
-

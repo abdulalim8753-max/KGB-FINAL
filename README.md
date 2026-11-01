@@ -39,9 +39,14 @@ kalpana-gold-buyers/
 │   └── script.js           # Core JS (Sticky header, mobile drawer, calculator, gallery lightbox, FAQ, forms)
 │
 ├── images/
-│   ├── logo.png            # High-resolution golden peacock brand emblem
-│   ├── hero.jpg            # Luxury bullion and jewellery hero banner
-│   ├── about.jpg           # Professional gold appraisal desk setting
+│   ├── logo.png            # Official Golden Peacock Emblem
+│   ├── hero.jpg            # Home hero: Luxury bullion, coins & ornaments (814 KB)
+│   ├── hero-services.jpg   # Services hero: Grand bridal jewellery collection (928 KB)
+│   ├── hero-cash-for-gold.jpg # Cash for Gold hero: 24K gold bullion bars & coins (789 KB)
+│   ├── hero-branches.jpg   # Branches hero: Executive showroom & gold peacock logo (798 KB)
+│   ├── hero-gallery.jpg    # Gallery hero: Ornate gold jewels & collectibles (814 KB)
+│   ├── hero-about.jpg      # About hero: Certified gold appraisal suite (715 KB)
+│   ├── hero-contact.jpg    # Contact hero: Luxury gold consultation lounge (796 KB)
 │   ├── services/           # Dedicated service visuals
 │   │   ├── old-gold.jpg
 │   │   ├── used-jewellery.jpg
