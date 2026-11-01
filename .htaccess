@@ -1,9 +1,67 @@
 # ----------------------------------------------------------------------
-# KALPANA GOLD BUYERS - HIGH PERFORMANCE APACHE / LITESPEED CONFIGURATION
-# Optimized for 99-100 Google PageSpeed / Lighthouse Scores
+# KALPANA GOLD BUYERS PRIVATE LTD. - ENTERPRISE SECURITY & PERFORMANCE
+# Fully Hardened Apache / LiteSpeed Configuration (OWASP & Lighthouse Compliant)
 # ----------------------------------------------------------------------
 
-# 1. ENABLE GZIP / DEFLATE COMPRESSION
+# 1. DISABLE DIRECTORY BROWSING (Prevents Information Disclosure)
+Options -Indexes
+
+# 2. BLOCK ACCESS TO HIDDEN AND SENSITIVE FILES
+<FilesMatch "^\.">
+  Order allow,deny
+  Deny from all
+</FilesMatch>
+
+<FilesMatch "(^#.*#|\.(bak|conf|dist|fla|in[ci]|log|psd|sh|sql|sw[op]|env|hintrc)|package\.json|package-lock\.json|README\.md)$">
+  Order allow,deny
+  Deny from all
+</FilesMatch>
+
+# 3. AUTOMATIC HTTPS ENFORCEMENT
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# 4. HTTP SECURITY HEADERS (CWE & OWASP Compliance)
+<IfModule mod_headers.c>
+  # HTTP Strict Transport Security (HSTS)
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+
+  # Prevent MIME-type Sniffing
+  Header always set X-Content-Type-Options "nosniff"
+
+  # Clickjacking Protection
+  Header always set X-Frame-Options "SAMEORIGIN"
+
+  # Referrer Policy
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+  # Restrict Unnecessary Browser APIs
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=(), usb=()"
+
+  # Cross-Site Scripting (XSS) Protection
+  Header always set X-XSS-Protection "1; mode=block"
+
+  # Content Security Policy (CSP)
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:; img-src 'self' data: https:; connect-src 'self'; frame-src 'self' https://www.google.com https://maps.google.com;"
+
+  # Performance Timing
+  Header set Timing-Allow-Origin "*"
+
+  # 1 Year Immutable Cache for Static Assets
+  <FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|webp|js|css|swf|woff|woff2|ttf|svg)$">
+    Header set Cache-Control "max-age=31536000, public, immutable"
+  </FilesMatch>
+
+  # HTML short cache
+  <FilesMatch "\.(html|htm)$">
+    Header set Cache-Control "max-age=3600, public, must-revalidate"
+  </FilesMatch>
+</IfModule>
+
+# 5. ENABLE GZIP / DEFLATE COMPRESSION
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/html
   AddOutputFilterByType DEFLATE text/plain
@@ -24,12 +82,12 @@
   AddOutputFilterByType DEFLATE application/vnd.ms-fontobject
 </IfModule>
 
-# 2. BROWSER CACHING (EXPIRES HEADERS)
+# 6. BROWSER CACHING (EXPIRES HEADERS)
 <IfModule mod_expires.c>
   ExpiresActive On
   ExpiresDefault "access plus 1 month"
 
-  # HTML documents - fresh cache
+  # HTML documents
   ExpiresByType text/html "access plus 1 hour"
 
   # Stylesheets & JavaScript
@@ -53,23 +111,5 @@
   ExpiresByType application/font-woff2 "access plus 1 year"
 </IfModule>
 
-# 3. CACHE-CONTROL HEADERS
-<IfModule mod_headers.c>
-  # 1 Year Immutable Cache for Static Assets
-  <FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|webp|js|css|swf|woff|woff2|ttf|svg)$">
-    Header set Cache-Control "max-age=31536000, public, immutable"
-  </FilesMatch>
-
-  # HTML short cache
-  <FilesMatch "\.(html|htm)$">
-    Header set Cache-Control "max-age=3600, public, must-revalidate"
-  </FilesMatch>
-
-  # Security & Performance Headers
-  Header always set X-Content-Type-Options "nosniff"
-  Header always set X-Frame-Options "SAMEORIGIN"
-  Header set Timing-Allow-Origin "*"
-</IfModule>
-
-# 4. UTF-8 ENCODING
+# 7. UTF-8 ENCODING
 AddDefaultCharset UTF-8

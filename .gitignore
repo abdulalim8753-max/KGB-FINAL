@@ -13,3 +13,10 @@ Thumbs.db
 .vscode/
 .idea/
 
+# Environment and Secrets
+.env
+.env.*
+*.pem
+*.key
+*.cert
+*.crt
