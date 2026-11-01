@@ -57,7 +57,7 @@
       <nav class="navbar">
         <!-- Logo -->
         <a href="index.html" class="brand-logo" aria-label="Kalpana Gold Buyers Home">
-          <img src="images/logo.png" alt="Kalpana Gold Buyers Logo" class="brand-logo-img"></a>
+          <img src="images/logo.png" alt="Kalpana Gold Buyers Logo" class="brand-logo-img" loading="lazy" decoding="async"></a>
 
         <!-- Desktop Navigation Links -->
         <ul class="nav-menu">
@@ -113,7 +113,7 @@
     <div>
       <div class="mobile-nav-header">
         <a href="index.html" class="brand-logo">
-          <img src="images/logo.png" alt="Kalpana Gold Buyers" class="brand-logo-img"></a>
+          <img src="images/logo.png" alt="Kalpana Gold Buyers" class="brand-logo-img" loading="lazy" decoding="async"></a>
         <button class="mobile-nav-close" aria-label="Close menu">
           <i class="fa-solid fa-xmark"></i>
         </button>
@@ -139,7 +139,11 @@
   </aside>
 
   <!-- 4. HERO SECTION -->
-  <section class="hero-section" style="background-image: url('images/hero.jpg');">
+    <section class="hero-section">
+    <picture class="hero-bg-picture">
+      <source media="(max-width: 768px)" srcset="images/hero-mobile.jpg">
+      <img src="images/hero.jpg" alt="Kalpana Gold Buyers Hero Background" class="hero-bg-img" fetchpriority="high" decoding="async" width="1280" height="714">
+    </picture>
     <div class="hero-overlay"></div>
     <div class="container">
       <div class="hero-content">
@@ -303,7 +307,7 @@
         <!-- Service 1: Old Gold Buying -->
         <div class="service-card">
           <div class="service-image-wrapper">
-            <img src="images/services/used-jewellery.jpg" alt="Old Gold Buying Guwahati">
+            <img src="images/services/used-jewellery.jpg" alt="Old Gold Buying Guwahati" loading="lazy" decoding="async">
             <span class="service-badge">Highest Value</span>
           </div>
           <div class="service-content">
@@ -326,7 +330,7 @@
         <!-- Service 2: Broken & Scrap Gold Buying -->
         <div class="service-card">
           <div class="service-image-wrapper">
-            <img src="images/hero.jpg" alt="Broken and Scrap Gold Buying">
+            <img src="images/hero.jpg" alt="Broken and Scrap Gold Buying" loading="lazy" decoding="async">
             <span class="service-badge">Any Condition</span>
           </div>
           <div class="service-content">
@@ -349,7 +353,7 @@
         <!-- Service 3: Release Pledged Gold (Highlight) -->
         <div class="service-card highlighted">
           <div class="service-image-wrapper">
-            <img src="images/services/pledged-gold.jpg" alt="Release Pledged Gold Guwahati">
+            <img src="images/services/pledged-gold.jpg" alt="Release Pledged Gold Guwahati" loading="lazy" decoding="async">
             <span class="service-badge" style="background: var(--gold-gradient); color: #000;">Specialized Service</span>
           </div>
           <div class="service-content">
@@ -375,7 +379,7 @@
         <!-- Service 4: Live Purity Testing -->
         <div class="service-card">
           <div class="service-image-wrapper">
-            <img src="images/services/purity-testing.jpg" alt="Live Gold Purity Testing Guwahati">
+            <img src="images/services/purity-testing.jpg" alt="Live Gold Purity Testing Guwahati" loading="lazy" decoding="async">
             <span class="service-badge">Certified Tech</span>
           </div>
           <div class="service-content">
@@ -540,7 +544,7 @@
         <!-- Branch 1 -->
         <div class="branch-card">
           <div class="branch-img-wrapper">
-            <img src="images/branches/guwahati-club.jpg" alt="Kalpana Gold Buyers Guwahati Club Branch">
+            <img src="images/branches/guwahati-club.jpg" alt="Kalpana Gold Buyers Guwahati Club Branch" loading="lazy" decoding="async">
             <span class="branch-status-pill">Open Today: 10:00 AM – 8:00 PM</span>
           </div>
           <div class="branch-body">
@@ -578,7 +582,7 @@
         <!-- Branch 2 -->
         <div class="branch-card">
           <div class="branch-img-wrapper">
-            <img src="images/about.jpg" alt="Kalpana Gold Buyers Adabari Branch">
+            <img src="images/about.jpg" alt="Kalpana Gold Buyers Adabari Branch" loading="lazy" decoding="async">
             <span class="branch-status-pill">Open Today: 10:00 AM – 8:00 PM</span>
           </div>
           <div class="branch-body">
@@ -749,7 +753,7 @@
         <!-- Col 1: About Company -->
         <div>
           <a href="index.html" class="brand-logo" style="margin-bottom: 1.25rem;">
-            <img src="images/logo.png" alt="Kalpana Gold Buyers" class="brand-logo-img"></a>
+            <img src="images/logo.png" alt="Kalpana Gold Buyers" class="brand-logo-img" loading="lazy" decoding="async"></a>
           <p class="footer-company-desc">
             Kalpana Gold Buyers Private Ltd. is Guwahati’s trusted premier enterprise for selling old, used, and scrap gold jewellery. Offering 100% non-destructive German XRF testing, accurate weighing, instant payouts, and assisted release of bank pledged gold.
           </p>

@@ -35,7 +35,7 @@
     <div class="container">
       <nav class="navbar">
         <a href="index.html" class="brand-logo" aria-label="Kalpana Gold Buyers Home">
-          <img src="images/logo.png" alt="Kalpana Gold Buyers Logo" class="brand-logo-img"></a>
+          <img src="images/logo.png" alt="Kalpana Gold Buyers Logo" class="brand-logo-img" loading="lazy" decoding="async"></a>
 
         <ul class="nav-menu">
           <li><a href="index.html" class="nav-link">Home</a></li>
@@ -80,7 +80,7 @@
     <div>
       <div class="mobile-nav-header">
         <a href="index.html" class="brand-logo">
-          <img src="images/logo.png" alt="Kalpana Gold Buyers" class="brand-logo-img"></a>
+          <img src="images/logo.png" alt="Kalpana Gold Buyers" class="brand-logo-img" loading="lazy" decoding="async"></a>
         <button class="mobile-nav-close" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></button>
       </div>
       <ul class="mobile-nav-links">
@@ -100,7 +100,11 @@
   </aside>
 
   <!-- Page Hero with Large Premium Gold Background -->
-  <section class="page-hero page-hero-services" style="background-image: url('images/hero-services.jpg');">
+    <section class="page-hero page-hero-services">
+    <picture class="hero-bg-picture">
+      <source media="(max-width: 768px)" srcset="images/hero-services-mobile.jpg">
+      <img src="images/hero-services.jpg" alt="" class="hero-bg-img" fetchpriority="high" decoding="async" width="1280" height="714">
+    </picture>
     <div class="page-hero-overlay"></div>
     <div class="container page-hero-content">
       <div class="section-tag"><i class="fa-solid fa-gem"></i> Professional Gold Solutions</div>
@@ -132,7 +136,7 @@
         <!-- 1. Old Gold Buying -->
         <div class="service-card">
           <div class="service-image-wrapper">
-            <img src="images/services/old-gold.jpg" alt="Old Gold Buying in Guwahati">
+            <img src="images/services/old-gold.jpg" alt="Old Gold Buying in Guwahati" loading="lazy" decoding="async">
             <span class="service-badge">Any Era / Antique</span>
           </div>
           <div class="service-content">
@@ -152,7 +156,7 @@
         <!-- 2. Used Gold Jewellery Buying -->
         <div class="service-card">
           <div class="service-image-wrapper">
-            <img src="images/services/used-jewellery.jpg" alt="Used Gold Jewellery Buying Guwahati">
+            <img src="images/services/used-jewellery.jpg" alt="Used Gold Jewellery Buying Guwahati" loading="lazy" decoding="async">
             <span class="service-badge">Highest Return</span>
           </div>
           <div class="service-content">
@@ -172,7 +176,7 @@
         <!-- 3. Broken Gold Buying -->
         <div class="service-card">
           <div class="service-image-wrapper">
-            <img src="images/services/broken-gold.jpg" alt="Broken Gold Buying Guwahati">
+            <img src="images/services/broken-gold.jpg" alt="Broken Gold Buying Guwahati" loading="lazy" decoding="async">
             <span class="service-badge">Any Condition</span>
           </div>
           <div class="service-content">
@@ -192,7 +196,7 @@
         <!-- 4. Gold Coin & Bullion Buying -->
         <div class="service-card">
           <div class="service-image-wrapper">
-            <img src="images/services/gold-coins.jpg" alt="Gold Coin Buying Guwahati">
+            <img src="images/services/gold-coins.jpg" alt="Gold Coin Buying Guwahati" loading="lazy" decoding="async">
             <span class="service-badge">24K &bull; 22K Coins</span>
           </div>
           <div class="service-content">
@@ -212,7 +216,7 @@
         <!-- 5. Live Purity Testing -->
         <div class="service-card">
           <div class="service-image-wrapper">
-            <img src="images/services/purity-testing.jpg" alt="Live Gold Purity Testing">
+            <img src="images/services/purity-testing.jpg" alt="Live Gold Purity Testing" loading="lazy" decoding="async">
             <span class="service-badge">Certified Tech</span>
           </div>
           <div class="service-content">
@@ -232,7 +236,7 @@
         <!-- 6. Professional Gold Evaluation -->
         <div class="service-card">
           <div class="service-image-wrapper">
-            <img src="images/services/gold-evaluation.jpg" alt="Professional Gold Evaluation Guwahati">
+            <img src="images/services/gold-evaluation.jpg" alt="Professional Gold Evaluation Guwahati" loading="lazy" decoding="async">
             <span class="service-badge">Expert Appraisers</span>
           </div>
           <div class="service-content">
@@ -252,7 +256,7 @@
         <!-- 7. Transparent Gold Weighing -->
         <div class="service-card">
           <div class="service-image-wrapper">
-            <img src="images/about.jpg" alt="Transparent Gold Weighing">
+            <img src="images/about.jpg" alt="Transparent Gold Weighing" loading="lazy" decoding="async">
             <span class="service-badge">3-Decimal Accuracy</span>
           </div>
           <div class="service-content">
@@ -272,7 +276,7 @@
         <!-- 8. Secure Payment Services -->
         <div class="service-card">
           <div class="service-image-wrapper">
-            <img src="images/hero.jpg" alt="Secure Payment Services Guwahati">
+            <img src="images/hero.jpg" alt="Secure Payment Services Guwahati" loading="lazy" decoding="async">
             <span class="service-badge">Instant Disbursement</span>
           </div>
           <div class="service-content">
@@ -293,7 +297,7 @@
         <div class="service-card highlighted" style="grid-column: 1 / -1;">
           <div style="display: grid; grid-template-columns: 1fr 1.4fr; gap: 2rem; align-items: center; padding: 1rem;">
             <div class="service-image-wrapper" style="height: 100%; min-height: 260px; border-radius: var(--radius-md);">
-              <img src="images/services/pledged-gold.jpg" alt="Release Pledged Gold Loan Settlement">
+              <img src="images/services/pledged-gold.jpg" alt="Release Pledged Gold Loan Settlement" loading="lazy" decoding="async">
               <span class="service-badge" style="background: var(--gold-gradient); color: #000;">Assisted Bank Release</span>
             </div>
             <div class="service-content" style="padding: 0;">
@@ -399,7 +403,7 @@
       <div class="footer-grid">
         <div>
           <a href="index.html" class="brand-logo" style="margin-bottom: 1.25rem;">
-            <img src="images/logo.png" alt="Kalpana Gold Buyers" class="brand-logo-img"></a>
+            <img src="images/logo.png" alt="Kalpana Gold Buyers" class="brand-logo-img" loading="lazy" decoding="async"></a>
           <p class="footer-company-desc">
             Kalpana Gold Buyers Private Ltd. is Guwahati’s trusted premier enterprise for selling old, used, and scrap gold jewellery. Offering 100% non-destructive German XRF testing, accurate weighing, instant payouts, and assisted release of bank pledged gold.
           </p>
