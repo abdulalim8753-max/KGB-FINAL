@@ -14,5 +14,12 @@
       }
     ],
     "css-prefix-order": "off"
-  }
+  },
+  "browserslist": [
+    "defaults",
+    "not ie 11",
+    "not and_ff <= 159",
+    "not firefox <= 159",
+    "not opera <= 135"
+  ]
 }

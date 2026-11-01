@@ -29,17 +29,22 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="images/logo.png">
 
-  <!-- Google Fonts -->
+  <!-- Preconnect External CDNs & Fonts for Fast Handshake -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-    <!-- Preload Critical Hero Image & Preconnect CDN -->
-  <link rel="preload" as="image" href="images/hero.jpg" fetchpriority="high">
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+  <!-- Preload Critical Hero Image (Responsive: Mobile 50-60KB / Desktop) -->
+  <link rel="preload" as="image" href="images/hero-mobile.jpg" media="(max-width: 768px)" fetchpriority="high">
+  <link rel="preload" as="image" href="images/hero.jpg" media="(min-width: 769px)" fetchpriority="high">
+
+  <!-- Google Fonts (Optimized weights & non-render-blocking for instant FCP) -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
+
+  <!-- Font Awesome Icons (Non-render-blocking for instant paint) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
 
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
