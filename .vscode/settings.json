@@ -1,0 +1,7 @@
+{
+  "files.associations": {
+    ".htaccess": "apacheconf",
+    "*.htaccess": "apacheconf",
+    ".hintrc": "jsonc"
+  }
+}
