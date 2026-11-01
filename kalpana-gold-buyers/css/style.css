@@ -82,6 +82,9 @@ html {
   font-size: 16px;
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 body {
@@ -90,6 +93,7 @@ body {
   color: var(--color-text-primary);
   line-height: 1.65;
   overflow-x: hidden;
+  width: 100%;
   position: relative;
   min-height: 100vh;
 }
@@ -110,15 +114,11 @@ a {
   transition: color var(--transition-fast);
 }
 
-ul,
-ol {
+ul, ol {
   list-style: none;
 }
 
-button,
-input,
-select,
-textarea {
+button, input, select, textarea {
   font-family: inherit;
   font-size: inherit;
   outline: none;
@@ -142,12 +142,7 @@ button {
 /* --------------------------------------------------------------------------
    3. TYPOGRAPHY & UTILITY CLASSES
    -------------------------------------------------------------------------- */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-serif);
   color: var(--color-white);
   line-height: 1.25;
@@ -384,8 +379,8 @@ h6 {
   left: 0;
   width: 100%;
   background: rgba(15, 15, 15, 0.94);
-  -webkit-backdrop-filter: blur(14px);
   backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(212, 175, 114, 0.22);
   z-index: 1000;
   transition: all var(--transition-normal);
@@ -436,6 +431,7 @@ h6 {
   color: var(--color-white);
   letter-spacing: 0.04em;
   line-height: 1.15;
+  white-space: nowrap;
 }
 
 .brand-tagline {
@@ -445,6 +441,7 @@ h6 {
   color: var(--color-gold);
   margin-top: 2px;
   font-weight: 600;
+  white-space: nowrap;
 }
 
 /* Nav Menu */
@@ -696,10 +693,12 @@ h6 {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg,
-      rgba(8, 8, 8, 0.94) 0%,
-      rgba(14, 14, 14, 0.86) 50%,
-      rgba(18, 18, 18, 0.72) 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(8, 8, 8, 0.94) 0%,
+    rgba(14, 14, 14, 0.86) 50%,
+    rgba(18, 18, 18, 0.72) 100%
+  );
   z-index: 1;
 }
 
@@ -801,10 +800,12 @@ h6 {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(180deg,
-      rgba(8, 8, 8, 0.88) 0%,
-      rgba(14, 14, 14, 0.80) 50%,
-      rgba(10, 10, 10, 0.94) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(8, 8, 8, 0.88) 0%,
+    rgba(14, 14, 14, 0.80) 50%,
+    rgba(10, 10, 10, 0.94) 100%
+  );
   z-index: 1;
 }
 
@@ -848,8 +849,8 @@ h6 {
   padding: 0.45rem 1.35rem;
   border-radius: var(--radius-full);
   border: 1px solid rgba(212, 175, 114, 0.28);
-  -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .breadcrumb a {
@@ -2016,7 +2017,7 @@ h6 {
   display: none;
 }
 
-.form-control.is-invalid~.invalid-feedback {
+.form-control.is-invalid ~ .invalid-feedback {
   display: block;
 }
 
@@ -2429,18 +2430,155 @@ textarea.form-control {
 /* --------------------------------------------------------------------------
    21. RESPONSIVE DESIGN (MEDIA QUERIES)
    -------------------------------------------------------------------------- */
-@media (max-width: 1080px) {
+
+/* DESKTOP SITE MODE & COMPACT LAPTOPS (900px to 1180px)
+   Enables ALL 7 navigation pages to fit seamlessly on one line when 
+   using "Desktop site" on mobile devices (980px) or on tablets and small laptops */
+@media (min-width: 900px) and (max-width: 1180px) {
+  .navbar {
+    gap: 0.6rem;
+  }
+
+  .brand-logo {
+    gap: 0.65rem;
+    flex-shrink: 0;
+  }
+
+  .brand-logo-img {
+    width: 42px;
+    height: 42px;
+  }
+
+  .brand-name {
+    font-size: 1.1rem;
+    white-space: nowrap;
+  }
+
+  .brand-tagline {
+    font-size: 0.6rem;
+    white-space: nowrap;
+  }
+
   .nav-menu {
-    display: none;
+    display: flex !important;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .nav-link {
+    font-size: 0.82rem;
+    padding: 0.4rem 0.15rem;
+    white-space: nowrap;
+  }
+
+  .nav-actions {
+    gap: 0.45rem;
+    flex-shrink: 0;
+  }
+
+  .btn-call,
+  .btn-whatsapp {
+    padding: 0.45rem 0.75rem;
+    font-size: 0.78rem;
+    white-space: nowrap;
   }
 
   .hamburger-btn {
-    display: flex;
+    display: none !important;
+  }
+
+  .mobile-nav-drawer,
+  .mobile-nav-backdrop {
+    display: none !important;
+  }
+}
+
+/* FULL DESKTOP (1181px and above)
+   Spacious luxury layout with all 7 pages clearly visible */
+@media (min-width: 1181px) {
+  .nav-menu {
+    display: flex !important;
+    gap: 1.5rem;
+  }
+
+  .nav-link {
+    font-size: 0.92rem;
+  }
+
+  .hamburger-btn {
+    display: none !important;
+  }
+
+  .mobile-nav-drawer,
+  .mobile-nav-backdrop {
+    display: none !important;
+  }
+}
+
+/* MOBILE AND NARROW TABLET (899px and below)
+   Clean, luxury, distraction-free mobile header that prevents logo squishing,
+   prevents header overflow, and lets the full brand title shine on 1 line */
+@media (max-width: 899px) {
+  :root {
+    --header-height: 70px;
+  }
+
+  .nav-menu {
+    display: none !important;
+  }
+
+  .hamburger-btn {
+    display: flex !important;
+  }
+
+  /* Hide bulky desktop call/whatsapp buttons from the narrow header bar 
+     so the brand title has plenty of room. Floating thumb buttons and drawer handles these */
+  .call-dropdown,
+  .nav-actions .btn-whatsapp {
+    display: none !important;
+  }
+
+  .navbar {
+    justify-content: space-between;
+    height: var(--header-height);
+  }
+
+  .brand-logo {
+    max-width: calc(100% - 60px);
+    gap: 0.65rem;
+    min-width: 0;
+  }
+
+  .brand-logo-img {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+  }
+
+  .brand-text {
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .brand-name {
+    font-size: 1.05rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.2;
+  }
+
+  .brand-tagline {
+    font-size: 0.62rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    letter-spacing: 0.1em;
   }
 
   .footer-grid {
     grid-template-columns: 1fr 1fr;
-    gap: 2.5rem;
+    gap: 2rem;
   }
 
   .contact-layout,
@@ -2454,37 +2592,41 @@ textarea.form-control {
   }
 }
 
+/* MOBILE SCREENS (768px and below) */
 @media (max-width: 768px) {
-  :root {
-    --header-height: 72px;
-  }
-
-  .top-bar {
-    display: none;
-    /* Hide top bar on mobile for cleaner viewport */
-  }
-
   .section-padding {
-    padding: 3.75rem 0;
+    padding: 3.5rem 0;
   }
 
   .hero-section {
-    min-height: 75vh;
-    padding: 4rem 0;
+    min-height: calc(100vh - 70px);
+    padding: 3rem 0 5.5rem 0;
+    display: flex;
+    align-items: center;
   }
 
   .hero-cta-group {
     flex-direction: column;
     width: 100%;
+    max-width: 360px;
+    margin-bottom: 1.5rem;
   }
 
   .hero-cta-group .btn {
     width: 100%;
   }
 
-  .nav-actions .btn-whatsapp {
-    display: none;
-    /* Keep call button visible in header, WhatsApp available in floating action */
+  .floating-actions {
+    bottom: 16px;
+    right: 14px;
+    gap: 10px;
+    z-index: 990;
+  }
+
+  .floating-btn {
+    width: 46px;
+    height: 46px;
+    font-size: 1.2rem;
   }
 
   .form-row {
@@ -2510,17 +2652,30 @@ textarea.form-control {
 
   .lightbox-nav {
     display: none;
-    /* Swipe or tap on mobile */
   }
 }
 
+/* SMALL PHONES (480px and below) */
 @media (max-width: 480px) {
+  .brand-logo-img {
+    width: 38px;
+    height: 38px;
+  }
+
   .brand-name {
-    font-size: 1.05rem;
+    font-size: 0.98rem;
   }
 
   .brand-tagline {
-    font-size: 0.6rem;
+    font-size: 0.56rem;
+  }
+
+  .hero-title {
+    font-size: clamp(1.85rem, 8vw, 2.4rem);
+  }
+
+  .hero-subtitle {
+    font-size: 0.95rem;
   }
 
   .section-title {
@@ -2529,18 +2684,19 @@ textarea.form-control {
 
   .calculator-container,
   .contact-form-box {
-    padding: 1.6rem 1.2rem;
+    padding: 1.5rem 1rem;
   }
 
   .floating-actions {
-    bottom: 18px;
-    right: 18px;
-    gap: 10px;
+    bottom: 14px;
+    right: 12px;
+    gap: 8px;
   }
 
   .floating-btn {
-    width: 48px;
-    height: 48px;
-    font-size: 1.25rem;
+    width: 44px;
+    height: 44px;
+    font-size: 1.15rem;
   }
 }
+
