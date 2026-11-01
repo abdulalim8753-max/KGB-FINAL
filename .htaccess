@@ -4,17 +4,30 @@
 # ----------------------------------------------------------------------
 
 # 1. DISABLE DIRECTORY BROWSING (Prevents Information Disclosure)
-Options -Indexes
+<IfModule mod_autoindex.c>
+  IndexIgnore *
+  Options -Indexes
+</IfModule>
 
-# 2. BLOCK ACCESS TO HIDDEN AND SENSITIVE FILES
+# 2. BLOCK ACCESS TO HIDDEN AND SENSITIVE FILES (Apache 2.2 & 2.4 compatible)
 <FilesMatch "^\.">
-  Order allow,deny
-  Deny from all
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
 </FilesMatch>
 
 <FilesMatch "(^#.*#|\.(bak|conf|dist|fla|in[ci]|log|psd|sh|sql|sw[op]|env|hintrc)|package\.json|package-lock\.json|README\.md)$">
-  Order allow,deny
-  Deny from all
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
 </FilesMatch>
 
 # 3. AUTOMATIC HTTPS ENFORCEMENT
@@ -24,10 +37,10 @@ Options -Indexes
   RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 </IfModule>
 
-# 4. HTTP SECURITY HEADERS (CWE & OWASP Compliance)
+# 4. HTTP SECURITY & CACHE HEADERS (CWE & OWASP Compliance)
 <IfModule mod_headers.c>
-  # HTTP Strict Transport Security (HSTS)
-  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+  # HTTP Strict Transport Security (HSTS - RFC 6797 compliant, HTTPS only)
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" env=HTTPS
 
   # Prevent MIME-type Sniffing
   Header always set X-Content-Type-Options "nosniff"
@@ -44,8 +57,8 @@ Options -Indexes
   # Cross-Site Scripting (XSS) Protection
   Header always set X-XSS-Protection "1; mode=block"
 
-  # Content Security Policy (CSP)
-  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:; img-src 'self' data: https:; connect-src 'self'; frame-src 'self' https://www.google.com https://maps.google.com;"
+  # Content Security Policy (CSP - Optimized for Google Fonts, Maps, & Cloudflare CDN)
+  Header always set Content-Security-Policy "default-src 'self' 'unsafe-inline' https: data:; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:; img-src 'self' data: https:; frame-src 'self' https://www.google.com https://*.google.com https://maps.google.com;"
 
   # Performance Timing
   Header set Timing-Allow-Origin "*"
@@ -55,7 +68,7 @@ Options -Indexes
     Header set Cache-Control "max-age=31536000, public, immutable"
   </FilesMatch>
 
-  # HTML short cache
+  # HTML Short Cache
   <FilesMatch "\.(html|htm)$">
     Header set Cache-Control "max-age=3600, public, must-revalidate"
   </FilesMatch>
