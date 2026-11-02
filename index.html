@@ -122,7 +122,51 @@
   </style>
 
   <!-- Full Stylesheet -->
-  <link rel="stylesheet" href="css/style.min.css">
+  <link rel="stylesheet" href="css/style.min.css?v=2.2">
+
+  <script>
+    (function() {
+      var lastNavToggle = 0;
+      window.openMobileNav = function(e) {
+        if (e && e.preventDefault) e.preventDefault();
+        var btn = document.querySelector('.hamburger-btn');
+        var nav = document.querySelector('.mobile-nav');
+        var backdrop = document.querySelector('.mobile-nav-backdrop');
+        if (btn) { btn.classList.add('active'); btn.setAttribute('aria-expanded', 'true'); }
+        if (nav) nav.classList.add('open');
+        if (backdrop) backdrop.classList.add('open');
+        document.body.classList.add('menu-open');
+      };
+
+      window.closeMobileNav = function(e) {
+        if (e && e.preventDefault) e.preventDefault();
+        lastNavToggle = Date.now();
+        var btn = document.querySelector('.hamburger-btn');
+        var nav = document.querySelector('.mobile-nav');
+        var backdrop = document.querySelector('.mobile-nav-backdrop');
+        if (btn) { btn.classList.remove('active'); btn.setAttribute('aria-expanded', 'false'); }
+        if (nav) nav.classList.remove('open');
+        if (backdrop) backdrop.classList.remove('open');
+        document.body.classList.remove('menu-open');
+      };
+
+      window.toggleMobileNav = function(e) {
+        var now = Date.now();
+        if (now - lastNavToggle < 400) {
+          if (e && e.preventDefault) e.preventDefault();
+          return;
+        }
+        lastNavToggle = now;
+        if (e && e.preventDefault) e.preventDefault();
+        var nav = document.querySelector('.mobile-nav');
+        if (nav && nav.classList.contains('open')) {
+          window.closeMobileNav(e);
+        } else {
+          window.openMobileNav(e);
+        }
+      };
+    })();
+  </script>
 </head>
 
 <body>
@@ -968,7 +1012,7 @@
   </button>
 
   <!-- Main JavaScript File -->
-  <script src="js/script.js" defer></script>
+  <script src="js/script.js?v=2.2" defer></script>
 </body>
 
 </html>

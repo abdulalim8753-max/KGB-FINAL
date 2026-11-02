@@ -9,6 +9,8 @@
  * Global Mobile Navigation Handlers
  * Expose immediately to window so inline onclick handlers and touch handlers work reliably at all times.
  */
+let lastNavToggleTime = 0;
+
 window.openMobileNav = function(e) {
   if (e) {
     if (e.preventDefault) e.preventDefault();
@@ -36,6 +38,7 @@ window.closeMobileNav = function(e) {
     if (e.preventDefault) e.preventDefault();
     if (e.stopPropagation) e.stopPropagation();
   }
+  lastNavToggleTime = Date.now();
   const hamburgerBtn = document.querySelector('.hamburger-btn');
   const mobileNav = document.querySelector('.mobile-nav');
   const mobileNavBackdrop = document.querySelector('.mobile-nav-backdrop');
@@ -54,6 +57,17 @@ window.closeMobileNav = function(e) {
 };
 
 window.toggleMobileNav = function(e) {
+  const now = Date.now();
+  // Debounce to prevent synthetic ghost click immediately after touchstart (common on mobile Chrome/Android)
+  if (now - lastNavToggleTime < 400) {
+    if (e) {
+      if (e.preventDefault) e.preventDefault();
+      if (e.stopPropagation) e.stopPropagation();
+    }
+    return;
+  }
+  lastNavToggleTime = now;
+
   if (e) {
     if (e.preventDefault) e.preventDefault();
     if (e.stopPropagation) e.stopPropagation();
@@ -207,15 +221,9 @@ const initApp = () => {
     hamburgerBtn.setAttribute('aria-expanded', 'false');
     hamburgerBtn.setAttribute('aria-controls', 'mobile-nav');
     
-    // Support click
     hamburgerBtn.addEventListener('click', (e) => {
       window.toggleMobileNav(e);
     });
-
-    // Support touchstart for instant feedback on mobile devices
-    hamburgerBtn.addEventListener('touchstart', (e) => {
-      window.toggleMobileNav(e);
-    }, { passive: false });
   }
 
   if (mobileNavClose) {
