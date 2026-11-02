@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -66,7 +66,7 @@
             <i class="fa-brands fa-whatsapp"></i> WhatsApp
           </a>
 
-          <button class="hamburger-btn" aria-label="Toggle navigation menu">
+          <button class="hamburger-btn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-nav" onclick="window.toggleMobileNav && window.toggleMobileNav(event)">
             <span class="hamburger-line"></span>
             <span class="hamburger-line"></span>
             <span class="hamburger-line"></span>
@@ -77,13 +77,13 @@
   </header>
 
   <!-- Mobile Nav -->
-  <div class="mobile-nav-backdrop"></div>
-  <aside class="mobile-nav" aria-label="Mobile Navigation">
+  <div class="mobile-nav-backdrop" onclick="window.closeMobileNav && window.closeMobileNav(event)"></div>
+  <aside id="mobile-nav" class="mobile-nav" aria-label="Mobile Navigation">
     <div>
       <div class="mobile-nav-header">
         <a href="index.html" class="brand-logo">
           <img src="images/logo.png" alt="Kalpana Gold Buyers" class="brand-logo-img" loading="lazy" decoding="async"></a>
-        <button class="mobile-nav-close" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></button>
+        <button class="mobile-nav-close" aria-label="Close menu" onclick="window.closeMobileNav && window.closeMobileNav(event)"><i class="fa-solid fa-xmark"></i></button>
       </div>
       <ul class="mobile-nav-links">
         <li><a href="index.html" class="nav-link"><span>Home</span> <i class="fa-solid fa-chevron-right"></i></a></li>
@@ -278,7 +278,7 @@
         <!-- 8. Secure Payment Services -->
         <div class="service-card">
           <div class="service-image-wrapper">
-            <img src="images/hero.jpg" alt="Secure Payment Services Guwahati" loading="lazy" decoding="async">
+            <img src="images/services/gold-coins.jpg" alt="Secure Payment Services Guwahati" loading="lazy" decoding="async">
             <span class="service-badge">Instant Disbursement</span>
           </div>
           <div class="service-content">

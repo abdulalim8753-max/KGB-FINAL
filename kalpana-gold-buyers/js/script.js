@@ -5,7 +5,68 @@
  * smooth interactions, and floating contact widgets.
  */
 
-document.addEventListener('DOMContentLoaded', () => {
+/**
+ * Global Mobile Navigation Handlers
+ * Expose immediately to window so inline onclick handlers and touch handlers work reliably at all times.
+ */
+window.openMobileNav = function(e) {
+  if (e) {
+    if (e.preventDefault) e.preventDefault();
+    if (e.stopPropagation) e.stopPropagation();
+  }
+  const hamburgerBtn = document.querySelector('.hamburger-btn');
+  const mobileNav = document.querySelector('.mobile-nav');
+  const mobileNavBackdrop = document.querySelector('.mobile-nav-backdrop');
+
+  if (hamburgerBtn) {
+    hamburgerBtn.classList.add('active');
+    hamburgerBtn.setAttribute('aria-expanded', 'true');
+  }
+  if (mobileNav) {
+    mobileNav.classList.add('open');
+  }
+  if (mobileNavBackdrop) {
+    mobileNavBackdrop.classList.add('open');
+  }
+  document.body.classList.add('menu-open');
+};
+
+window.closeMobileNav = function(e) {
+  if (e) {
+    if (e.preventDefault) e.preventDefault();
+    if (e.stopPropagation) e.stopPropagation();
+  }
+  const hamburgerBtn = document.querySelector('.hamburger-btn');
+  const mobileNav = document.querySelector('.mobile-nav');
+  const mobileNavBackdrop = document.querySelector('.mobile-nav-backdrop');
+
+  if (hamburgerBtn) {
+    hamburgerBtn.classList.remove('active');
+    hamburgerBtn.setAttribute('aria-expanded', 'false');
+  }
+  if (mobileNav) {
+    mobileNav.classList.remove('open');
+  }
+  if (mobileNavBackdrop) {
+    mobileNavBackdrop.classList.remove('open');
+  }
+  document.body.classList.remove('menu-open');
+};
+
+window.toggleMobileNav = function(e) {
+  if (e) {
+    if (e.preventDefault) e.preventDefault();
+    if (e.stopPropagation) e.stopPropagation();
+  }
+  const mobileNav = document.querySelector('.mobile-nav');
+  if (mobileNav && mobileNav.classList.contains('open')) {
+    window.closeMobileNav(e);
+  } else {
+    window.openMobileNav(e);
+  }
+};
+
+const initApp = () => {
   'use strict';
 
   // -------------------------------------------------------------------------
@@ -55,47 +116,50 @@ document.addEventListener('DOMContentLoaded', () => {
   const mobileNavClose = document.querySelector('.mobile-nav-close');
   const mobileNavLinks = document.querySelectorAll('.mobile-nav .nav-link');
 
-  const openMobileNav = () => {
-    if (hamburgerBtn) hamburgerBtn.classList.add('active');
-    if (mobileNav) mobileNav.classList.add('open');
-    if (mobileNavBackdrop) mobileNavBackdrop.classList.add('open');
-    document.body.classList.add('menu-open');
-  };
-
-  const closeMobileNav = () => {
-    if (hamburgerBtn) hamburgerBtn.classList.remove('active');
-    if (mobileNav) mobileNav.classList.remove('open');
-    if (mobileNavBackdrop) mobileNavBackdrop.classList.remove('open');
-    document.body.classList.remove('menu-open');
-  };
-
   if (hamburgerBtn) {
-    hamburgerBtn.addEventListener('click', () => {
-      if (mobileNav && mobileNav.classList.contains('open')) {
-        closeMobileNav();
-      } else {
-        openMobileNav();
-      }
+    hamburgerBtn.setAttribute('aria-expanded', 'false');
+    hamburgerBtn.setAttribute('aria-controls', 'mobile-nav');
+    
+    // Support click
+    hamburgerBtn.addEventListener('click', (e) => {
+      window.toggleMobileNav(e);
     });
+
+    // Support touchstart for instant feedback on mobile devices
+    hamburgerBtn.addEventListener('touchstart', (e) => {
+      window.toggleMobileNav(e);
+    }, { passive: false });
   }
 
   if (mobileNavClose) {
-    mobileNavClose.addEventListener('click', closeMobileNav);
+    mobileNavClose.addEventListener('click', (e) => {
+      window.closeMobileNav(e);
+    });
+    mobileNavClose.addEventListener('touchstart', (e) => {
+      window.closeMobileNav(e);
+    }, { passive: false });
   }
 
   if (mobileNavBackdrop) {
-    mobileNavBackdrop.addEventListener('click', closeMobileNav);
+    mobileNavBackdrop.addEventListener('click', (e) => {
+      window.closeMobileNav(e);
+    });
+    mobileNavBackdrop.addEventListener('touchstart', (e) => {
+      window.closeMobileNav(e);
+    }, { passive: false });
   }
 
   mobileNavLinks.forEach(link => {
-    link.addEventListener('click', closeMobileNav);
+    link.addEventListener('click', () => {
+      window.closeMobileNav();
+    });
   });
 
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-      closeMobileNav();
-      closeLightbox();
-      closeModalFeedback();
+      window.closeMobileNav();
+      if (typeof closeLightbox === 'function') closeLightbox();
+      if (typeof closeModalFeedback === 'function') closeModalFeedback();
     }
   });
 
@@ -520,5 +584,11 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
-});
+};
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initApp);
+} else {
+  initApp();
+}
 
