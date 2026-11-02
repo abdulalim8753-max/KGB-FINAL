@@ -1409,19 +1409,33 @@ h1, h2, h3, h4, h5, h6 {
 
 .purity-pills-selector {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(75px, 1fr));
-  gap: 0.6rem;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.5rem;
 }
 
 .purity-pill-btn {
   background: #202020;
   border: 1px solid rgba(212, 175, 114, 0.2);
   color: #e0e0e0;
-  padding: 0.65rem 0.5rem;
+  padding: 0.65rem 0.35rem;
   border-radius: var(--radius-sm);
   text-align: center;
   cursor: pointer;
   transition: all var(--transition-fast);
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
+  min-height: 52px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.purity-pill-btn .karat,
+.purity-pill-btn .percent {
+  pointer-events: none;
 }
 
 .purity-pill-btn .karat {
@@ -1450,6 +1464,67 @@ h1, h2, h3, h4, h5, h6 {
 .purity-pill-btn.active .percent {
   color: #2b2310;
   font-weight: 600;
+}
+
+/* Mobile Live Valuation Preview Banner */
+.calc-mobile-live-bar {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(135deg, rgba(212, 175, 114, 0.16) 0%, rgba(20, 20, 20, 0.95) 100%);
+  border: 1px solid rgba(212, 175, 114, 0.4);
+  border-radius: var(--radius-md);
+  padding: 0.85rem 1.15rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+}
+
+.calc-mobile-live-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.calc-mobile-live-tag {
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-gold);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.calc-mobile-live-amount {
+  font-family: var(--font-serif);
+  font-size: 1.65rem;
+  font-weight: 800;
+  color: var(--color-white);
+  line-height: 1.1;
+  text-shadow: 0 2px 10px rgba(212, 175, 114, 0.3);
+  transition: all 0.2s ease;
+}
+
+.calc-mobile-live-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-gold);
+  background: rgba(212, 175, 114, 0.12);
+  border: 1px solid rgba(212, 175, 114, 0.3);
+  border-radius: var(--radius-full);
+  padding: 0.45rem 0.85rem;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+}
+
+.calc-mobile-live-btn:hover {
+  background: var(--color-gold);
+  color: #000;
 }
 
 .calc-input-wrapper {
@@ -2624,6 +2699,11 @@ textarea.form-control {
   .story-layout,
   .calc-grid {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .calc-mobile-live-bar {
+    display: flex !important;
   }
 
   .calc-result-card {
@@ -2744,6 +2824,33 @@ textarea.form-control {
   .calculator-container,
   .contact-form-box {
     padding: 1.5rem 1rem;
+  }
+
+  .purity-pills-selector {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.35rem;
+  }
+
+  .purity-pill-btn {
+    padding: 0.5rem 0.2rem;
+    min-height: 50px;
+  }
+
+  .purity-pill-btn .karat {
+    font-size: 0.88rem;
+  }
+
+  .purity-pill-btn .percent {
+    font-size: 0.62rem;
+    line-height: 1.1;
+  }
+
+  .calc-mobile-live-bar {
+    padding: 0.75rem 0.95rem;
+  }
+
+  .calc-mobile-live-amount {
+    font-size: 1.45rem;
   }
 
   .floating-actions {

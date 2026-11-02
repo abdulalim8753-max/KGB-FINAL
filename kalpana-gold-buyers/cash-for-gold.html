@@ -146,6 +146,17 @@
         <div class="calc-grid">
           <!-- Left: Input Controls -->
           <div class="calc-inputs-col">
+            <!-- Mobile Quick Live Valuation Preview Banner (Visible on mobile screens for instant visual feedback) -->
+            <div class="calc-mobile-live-bar">
+              <div class="calc-mobile-live-info">
+                <span class="calc-mobile-live-tag"><i class="fa-solid fa-sparkles"></i> Estimated Indicative Value</span>
+                <span class="calc-mobile-live-amount" id="calc-live-preview-amount">₹64,633</span>
+              </div>
+              <a href="#calc-result-box" class="calc-mobile-live-btn" aria-label="View Detailed Breakdown">
+                <span>Breakdown</span> <i class="fa-solid fa-arrow-down"></i>
+              </a>
+            </div>
+
             <!-- Purity Selector -->
             <div class="calc-form-group">
               <label class="calc-label">
@@ -153,23 +164,23 @@
                 <span class="hint">Click to choose purity</span>
               </label>
               <div class="purity-pills-selector">
-                <button type="button" class="purity-pill-btn" data-purity="99.9" data-karat="24K">
+                <button type="button" class="purity-pill-btn" data-purity="99.9" data-karat="24K" onclick="window.selectCalcPurity && window.selectCalcPurity(this, 99.9, '24K')">
                   <span class="karat">24K</span>
                   <span class="percent">99.9%</span>
                 </button>
-                <button type="button" class="purity-pill-btn active" data-purity="91.6" data-karat="22K">
+                <button type="button" class="purity-pill-btn active" data-purity="91.6" data-karat="22K" onclick="window.selectCalcPurity && window.selectCalcPurity(this, 91.6, '22K')">
                   <span class="karat">22K</span>
                   <span class="percent">91.6% (Standard)</span>
                 </button>
-                <button type="button" class="purity-pill-btn" data-purity="75.0" data-karat="18K">
+                <button type="button" class="purity-pill-btn" data-purity="75.0" data-karat="18K" onclick="window.selectCalcPurity && window.selectCalcPurity(this, 75.0, '18K')">
                   <span class="karat">18K</span>
                   <span class="percent">75.0%</span>
                 </button>
-                <button type="button" class="purity-pill-btn" data-purity="58.5" data-karat="14K">
+                <button type="button" class="purity-pill-btn" data-purity="58.5" data-karat="14K" onclick="window.selectCalcPurity && window.selectCalcPurity(this, 58.5, '14K')">
                   <span class="karat">14K</span>
                   <span class="percent">58.5%</span>
                 </button>
-                <button type="button" class="purity-pill-btn" data-purity="41.7" data-karat="10K">
+                <button type="button" class="purity-pill-btn" data-purity="41.7" data-karat="10K" onclick="window.selectCalcPurity && window.selectCalcPurity(this, 41.7, '10K')">
                   <span class="karat">10K</span>
                   <span class="percent">41.7%</span>
                 </button>
@@ -183,7 +194,7 @@
                 <span class="hint">In Grams (e.g., 10.5)</span>
               </label>
               <div class="calc-input-wrapper">
-                <input type="number" id="calc-weight" value="10" min="0.1" step="0.1" placeholder="Enter weight in grams">
+                <input type="number" id="calc-weight" value="10" min="0.01" step="any" inputmode="decimal" placeholder="Enter weight in grams" oninput="window.updateGoldCalculations && window.updateGoldCalculations()" onchange="window.updateGoldCalculations && window.updateGoldCalculations()" onkeyup="window.updateGoldCalculations && window.updateGoldCalculations()">
                 <span class="calc-input-unit">grams</span>
               </div>
             </div>
@@ -195,7 +206,7 @@
                 <span class="hint">Guwahati Bullion Rate (₹)</span>
               </label>
               <div class="calc-input-wrapper">
-                <input type="number" id="calc-rate" value="7200" min="1000" step="50" placeholder="e.g. 7200">
+                <input type="number" id="calc-rate" value="7200" min="1" step="any" inputmode="decimal" placeholder="e.g. 7200" oninput="window.updateGoldCalculations && window.updateGoldCalculations()" onchange="window.updateGoldCalculations && window.updateGoldCalculations()" onkeyup="window.updateGoldCalculations && window.updateGoldCalculations()">
                 <span class="calc-input-unit">₹ / gram</span>
               </div>
               <small style="color: var(--color-text-muted); font-size: 0.78rem; margin-top: 0.35rem; display: block;">
@@ -210,7 +221,7 @@
                 <span class="hint">Standard 1.5% to 3%</span>
               </label>
               <div class="calc-input-wrapper">
-                <input type="number" id="calc-deduction" value="2" min="0" max="15" step="0.5" placeholder="e.g. 2%">
+                <input type="number" id="calc-deduction" value="2" min="0" max="100" step="any" inputmode="decimal" placeholder="e.g. 2%" oninput="window.updateGoldCalculations && window.updateGoldCalculations()" onchange="window.updateGoldCalculations && window.updateGoldCalculations()" onkeyup="window.updateGoldCalculations && window.updateGoldCalculations()">
                 <span class="calc-input-unit">%</span>
               </div>
             </div>
@@ -218,9 +229,9 @@
 
           <!-- Right: Result Card -->
           <div class="calc-results-col">
-            <div class="calc-result-card">
+            <div class="calc-result-card" id="calc-result-box">
               <div class="calc-result-title">Estimated Indicative Value</div>
-              <div class="calc-result-amount" id="calc-total-estimate">₹64,635</div>
+              <div class="calc-result-amount" id="calc-total-estimate">₹64,633</div>
 
               <table class="calc-breakdown-table">
                 <tr>

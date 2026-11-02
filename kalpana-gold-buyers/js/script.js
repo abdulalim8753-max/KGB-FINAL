@@ -66,6 +66,93 @@ window.toggleMobileNav = function(e) {
   }
 };
 
+/**
+ * Global Gold Valuation Calculator Handlers
+ * Expose immediately to window so inline onclick, oninput, and onchange handlers work reliably on all mobile devices.
+ */
+window.currentPurityPercent = 91.6; // default 22K (91.6%)
+window.currentKaratLabel = '22K (91.6% Purity)';
+
+window.selectCalcPurity = function(btn, purity, karat) {
+  window.currentPurityPercent = parseFloat(purity) || 91.6;
+  window.currentKaratLabel = `${karat} (${purity}% Purity)`;
+
+  const pills = document.querySelectorAll('.purity-pill-btn');
+  pills.forEach(p => p.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+
+  window.updateGoldCalculations();
+};
+
+window.updateGoldCalculations = function() {
+  const weightInput = document.querySelector('#calc-weight');
+  const rateInput = document.querySelector('#calc-rate');
+  const deductionInput = document.querySelector('#calc-deduction');
+
+  const totalEstimateEl = document.querySelector('#calc-total-estimate');
+  const livePreviewAmountEl = document.querySelector('#calc-live-preview-amount');
+  const pureGramsEl = document.querySelector('#calc-pure-grams');
+  const grossValueEl = document.querySelector('#calc-gross-value');
+  const deductionAmountEl = document.querySelector('#calc-deduction-amount');
+  const selectedPurityDisplayEl = document.querySelector('#calc-selected-purity-display');
+
+  // Sanitize values and support comma decimals (e.g. 10,5 or 10.5)
+  const parseVal = (input, fallback = 0) => {
+    if (!input || input.value === undefined || input.value === null || input.value === '') return fallback;
+    const cleanStr = input.value.toString().replace(/,/g, '.').trim();
+    const parsed = parseFloat(cleanStr);
+    return isNaN(parsed) ? fallback : parsed;
+  };
+
+  const weight = parseVal(weightInput, 0);
+  const rate24k = parseVal(rateInput, 0);
+  const deductionPercent = parseVal(deductionInput, 0);
+  const purity = window.currentPurityPercent || 91.6;
+  const karatLabel = window.currentKaratLabel || '22K (91.6% Purity)';
+
+  // Net pure gold equivalent weight
+  const pureWeightGrams = weight * (purity / 100);
+
+  // Gross value based on 24K gold rate
+  const grossVal = pureWeightGrams * rate24k;
+
+  // Applicable margin/deduction amount
+  const deductionVal = grossVal * (deductionPercent / 100);
+
+  // Final estimated indicative payout
+  const netVal = Math.max(0, grossVal - deductionVal);
+
+  const formatCurrencyINR = (num) => {
+    if (isNaN(num) || num < 0) return '₹0';
+    return new Intl.NumberFormat('en-IN', {
+      style: 'currency',
+      currency: 'INR',
+      maximumFractionDigits: 0
+    }).format(Math.round(num));
+  };
+
+  const formattedNet = formatCurrencyINR(netVal);
+
+  if (totalEstimateEl) {
+    totalEstimateEl.textContent = formattedNet;
+  }
+  if (livePreviewAmountEl) {
+    livePreviewAmountEl.textContent = formattedNet;
+  }
+  if (pureGramsEl) {
+    pureGramsEl.textContent = `${pureWeightGrams.toFixed(2)} g`;
+  }
+  if (grossValueEl) {
+    grossValueEl.textContent = formatCurrencyINR(grossVal);
+  }
+  if (deductionAmountEl) {
+    deductionAmountEl.textContent = `- ${formatCurrencyINR(deductionVal)} (${deductionPercent}%)`;
+  }
+  if (selectedPurityDisplayEl) {
+    selectedPurityDisplayEl.textContent = karatLabel;
+  }
+};
+
 const initApp = () => {
   'use strict';
 
@@ -197,80 +284,26 @@ const initApp = () => {
     const rateInput = calcContainer.querySelector('#calc-rate');
     const deductionInput = calcContainer.querySelector('#calc-deduction');
 
-    const totalEstimateEl = calcContainer.querySelector('#calc-total-estimate');
-    const pureGramsEl = calcContainer.querySelector('#calc-pure-grams');
-    const grossValueEl = calcContainer.querySelector('#calc-gross-value');
-    const deductionAmountEl = calcContainer.querySelector('#calc-deduction-amount');
-    const selectedPurityDisplayEl = calcContainer.querySelector('#calc-selected-purity-display');
-
-    let currentPurityPercent = 91.6; // default 22K (91.6%)
-    let currentKaratLabel = '22K (91.6% Purity)';
-
-    const formatCurrencyINR = (num) => {
-      if (isNaN(num) || num < 0) return '₹0';
-      return new Intl.NumberFormat('en-IN', {
-        style: 'currency',
-        currency: 'INR',
-        maximumFractionDigits: 0
-      }).format(Math.round(num));
-    };
-
-    const updateCalculations = () => {
-      const weight = parseFloat(weightInput ? weightInput.value : 0) || 0;
-      const rate24k = parseFloat(rateInput ? rateInput.value : 0) || 0;
-      const deductionPercent = parseFloat(deductionInput ? deductionInput.value : 0) || 0;
-
-      // Net pure gold equivalent weight
-      const pureWeightGrams = weight * (currentPurityPercent / 100);
-
-      // Gross value based on 24K gold rate
-      const grossVal = pureWeightGrams * rate24k;
-
-      // Applicable margin/deduction amount
-      const deductionVal = grossVal * (deductionPercent / 100);
-
-      // Final estimated indicative payout
-      const netVal = Math.max(0, grossVal - deductionVal);
-
-      if (totalEstimateEl) {
-        totalEstimateEl.textContent = formatCurrencyINR(netVal);
-      }
-      if (pureGramsEl) {
-        pureGramsEl.textContent = `${pureWeightGrams.toFixed(2)} g`;
-      }
-      if (grossValueEl) {
-        grossValueEl.textContent = formatCurrencyINR(grossVal);
-      }
-      if (deductionAmountEl) {
-        deductionAmountEl.textContent = `- ${formatCurrencyINR(deductionVal)} (${deductionPercent}%)`;
-      }
-      if (selectedPurityDisplayEl) {
-        selectedPurityDisplayEl.textContent = currentKaratLabel;
-      }
-    };
-
     purityPills.forEach(pill => {
-      pill.addEventListener('click', () => {
-        purityPills.forEach(p => p.classList.remove('active'));
-        pill.classList.add('active');
-
+      const handleSelect = (e) => {
         const purityVal = parseFloat(pill.dataset.purity);
         const karatVal = pill.dataset.karat || `${purityVal}%`;
+        window.selectCalcPurity(pill, purityVal, karatVal);
+      };
 
-        if (!isNaN(purityVal)) {
-          currentPurityPercent = purityVal;
-          currentKaratLabel = `${karatVal} (${purityVal}% Purity)`;
-          updateCalculations();
-        }
-      });
+      pill.addEventListener('click', handleSelect);
+      pill.addEventListener('touchstart', handleSelect, { passive: true });
     });
 
-    if (weightInput) weightInput.addEventListener('input', updateCalculations);
-    if (rateInput) rateInput.addEventListener('input', updateCalculations);
-    if (deductionInput) deductionInput.addEventListener('input', updateCalculations);
+    const inputEvents = ['input', 'change', 'keyup', 'paste'];
+    inputEvents.forEach(evt => {
+      if (weightInput) weightInput.addEventListener(evt, window.updateGoldCalculations);
+      if (rateInput) rateInput.addEventListener(evt, window.updateGoldCalculations);
+      if (deductionInput) deductionInput.addEventListener(evt, window.updateGoldCalculations);
+    });
 
     // Initial calculation run
-    updateCalculations();
+    window.updateGoldCalculations();
   }
 
   // -------------------------------------------------------------------------
