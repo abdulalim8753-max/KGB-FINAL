@@ -1,0 +1,17 @@
+/*
+  Link: </llms.txt>; rel="describedby"; type="text/plain", </index.md>; rel="alternate"; type="text/markdown"
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+
+/.well-known/mcp/server-card.json
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+
+/llms.txt
+  Access-Control-Allow-Origin: *
+  Content-Type: text/plain; charset=utf-8
+
+/index.md
+  Access-Control-Allow-Origin: *
+  Content-Type: text/markdown; charset=utf-8

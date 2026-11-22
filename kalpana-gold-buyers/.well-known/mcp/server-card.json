@@ -1,0 +1,77 @@
+{
+  "$schema": "https://raw.githubusercontent.com/modelcontextprotocol/specification/main/schema/server-card.json",
+  "name": "kalpana-gold-buyers-mcp",
+  "version": "1.0.0",
+  "description": "Official Model Context Protocol (MCP) server card for Kalpana Gold Buyers Private Ltd. Provides gold valuation estimation, branch directory lookup, and pledged gold release guidance in Guwahati and Assam for AI agents and assistants.",
+  "homepage": "https://kalpanagoldbuyers.com/",
+  "documentation": "https://kalpanagoldbuyers.com/llms.txt",
+  "endpoint": "https://kalpanagoldbuyers.com/api/mcp",
+  "transport": "http-sse",
+  "capabilities": {
+    "tools": [
+      {
+        "name": "estimate_gold_value",
+        "description": "Calculate estimated cash valuation for selling gold jewelry or bullion in Guwahati/Assam based on karat purity and gross weight in grams.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "weightGrams": {
+              "type": "number",
+              "description": "Gross weight of the gold item in grams (e.g. 10.5)"
+            },
+            "karat": {
+              "type": "integer",
+              "enum": [24, 22, 20, 18, 14, 10, 9],
+              "description": "Karat purity of the gold (e.g. 24 for 99.9%, 22 for 91.6%, 18 for 75%)"
+            }
+          },
+          "required": ["weightGrams", "karat"]
+        }
+      },
+      {
+        "name": "get_branch_locations",
+        "description": "Retrieve official branch addresses, contact numbers, landmarks, and opening hours for Kalpana Gold Buyers in Guwahati Club, Adabari, and Goalpara.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "branch": {
+              "type": "string",
+              "enum": ["all", "guwahati-club", "adabari", "goalpara"],
+              "description": "Branch identifier or 'all' to list all branches"
+            }
+          }
+        }
+      },
+      {
+        "name": "inquire_pledged_gold_release",
+        "description": "Get assisted solution details to close outstanding gold loans with banks or NBFCs, retrieve pledged ornaments, and receive surplus payout.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "loanAmount": {
+              "type": "number",
+              "description": "Approximate outstanding loan balance in INR"
+            },
+            "approxGoldWeightGrams": {
+              "type": "number",
+              "description": "Approximate pledged gold weight in grams"
+            }
+          },
+          "required": ["loanAmount", "approxGoldWeightGrams"]
+        }
+      }
+    ],
+    "resources": [
+      {
+        "uri": "https://kalpanagoldbuyers.com/llms.txt",
+        "name": "Kalpana Gold Buyers Agent Guide & Knowledge Base",
+        "mimeType": "text/plain"
+      },
+      {
+        "uri": "https://kalpanagoldbuyers.com/index.md",
+        "name": "Homepage Markdown Representation",
+        "mimeType": "text/markdown"
+      }
+    ]
+  }
+}

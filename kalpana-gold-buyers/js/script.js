@@ -628,6 +628,173 @@ const initApp = () => {
   }
 };
 
+/**
+ * -------------------------------------------------------------------------
+ * 9. WebMCP (Web Model Context Protocol) Tools for In-Browser AI Agents
+ * Registers tools with navigator.modelContext.registerTool() on page load.
+ * -------------------------------------------------------------------------
+ */
+(function initWebMCP() {
+  const mcpTools = [
+    {
+      name: "estimate_gold_value",
+      description: "Estimate gross and net cash payout for selling gold ornaments, coins, or bullion in Guwahati and Goalpara, Assam based on karat purity and gross weight in grams.",
+      inputSchema: {
+        type: "object",
+        properties: {
+          weight_grams: {
+            type: "number",
+            description: "Gross weight of the gold item in grams (e.g. 10.5)"
+          },
+          karat: {
+            type: "integer",
+            enum: [24, 22, 20, 18, 14, 10, 9],
+            description: "Gold purity in Karats (24K = 99.9%, 22K = 91.6%, 18K = 75%)"
+          }
+        },
+        required: ["weight_grams", "karat"]
+      },
+      execute: async function(params) {
+        const weight = parseFloat(params.weight_grams) || 0;
+        const karat = parseInt(params.karat, 10) || 22;
+        const purityRatios = { 24: 0.999, 22: 0.916, 20: 0.833, 18: 0.750, 14: 0.585, 10: 0.417, 9: 0.375 };
+        const ratio = purityRatios[karat] || 0.916;
+        const base24KRate = 7200; // Indicative market rate ₹/gram
+        const pureGoldGrams = weight * ratio;
+        const grossValuation = Math.round(pureGoldGrams * base24KRate);
+        const netCashEstimate = Math.round(grossValuation * 0.98); // 2% standard margin
+
+        return {
+          grossWeightGrams: weight,
+          karat: karat,
+          purityPercentage: (ratio * 100).toFixed(1) + "%",
+          equivalentPureGoldGrams: parseFloat(pureGoldGrams.toFixed(3)),
+          marketRate24KPerGram: "₹" + base24KRate.toLocaleString("en-IN"),
+          grossValuation: "₹" + grossValuation.toLocaleString("en-IN"),
+          netPayoutEstimate: "₹" + netCashEstimate.toLocaleString("en-IN"),
+          disbursementMethod: "Instant IMPS / RTGS bank transfer or cash within statutory limit",
+          verificationMethod: "100% German XRF non-destructive testing & 3-decimal digital scale in customer presence",
+          contactHelplines: {
+            guwahatiClub: "+91 91810 54324",
+            adabari: "+91 91810 54325",
+            goalpara: "+91 91810 54327",
+            loanReleaseDesk: "+91 91810 54326"
+          }
+        };
+      }
+    },
+    {
+      name: "get_branch_locations",
+      description: "Lookup physical showroom addresses, phone helplines, opening hours, and Google Maps links for Kalpana Gold Buyers in Assam.",
+      inputSchema: {
+        type: "object",
+        properties: {
+          branch: {
+            type: "string",
+            enum: ["all", "guwahati-club", "adabari", "goalpara"],
+            description: "Branch ID or 'all' to list all branches"
+          }
+        }
+      },
+      execute: async function(params) {
+        const branches = [
+          {
+            id: "guwahati-club",
+            name: "Guwahati Club Branch (Central Guwahati)",
+            address: "First Floor, Maa Kali Complex, Near Style Baazar, GNB Road, Guwahati Club, Guwahati - 781003, Assam",
+            phone: "+91 91810 54324",
+            hours: "10:00 AM – 8:00 PM (Monday to Sunday, All 7 Days)",
+            googleMap: "https://maps.app.goo.gl/P8HhUCJf84Hki8DW7?g_st=aw"
+          },
+          {
+            id: "adabari",
+            name: "Adabari Branch (Western Guwahati)",
+            address: "Adabari, Near NCS Square Mall, Guwahati - 781014, Assam",
+            phone: "+91 91810 54325",
+            hours: "10:00 AM – 8:00 PM (Monday to Sunday, All 7 Days)",
+            googleMap: "https://maps.google.com/maps?q=NCS+Square+Mall+Adabari+Guwahati+Assam"
+          },
+          {
+            id: "goalpara",
+            name: "Goalpara Branch (Lower Assam)",
+            address: "New Market, First Floor, Goaltuli Road, Near Transport Chariali, Goalpara - 783101, Assam",
+            phone: "+91 91810 54327",
+            hours: "10:00 AM – 8:00 PM (Monday to Sunday, All 7 Days)",
+            googleMap: "https://maps.google.com/maps?q=New+Market+Goaltuli+Road+Transport+Chariali+Goalpara+Assam+783101"
+          }
+        ];
+
+        const result = (params && params.branch && params.branch !== 'all')
+          ? branches.filter(b => b.id === params.branch)
+          : branches;
+
+        return { branches: result };
+      }
+    },
+    {
+      name: "inquire_pledged_gold_release",
+      description: "Get immediate instructions and assisted service to release pledged gold from any bank or NBFC in Assam and receive surplus cash.",
+      inputSchema: {
+        type: "object",
+        properties: {
+          loanAmount: {
+            type: "number",
+            description: "Approximate loan balance in INR"
+          },
+          approxGoldWeightGrams: {
+            type: "number",
+            description: "Approximate gold weight pledged in grams"
+          }
+        },
+        required: ["loanAmount", "approxGoldWeightGrams"]
+      },
+      execute: async function(params) {
+        return {
+          overview: "Kalpana Gold Buyers assists in clearing bank gold loans, retrieving ornaments securely, and paying you the remaining balance value immediately.",
+          process: [
+            "1. Call our dedicated Gold Loan Release Desk (+91 91810 54326 / +91 91810 54324).",
+            "2. Present the bank/NBFC pawn ticket or loan voucher.",
+            "3. Our company representative accompanies you to the financial institution (SBI, HDFC, Muthoot, Manappuram, etc.) and provides funds to settle the loan balance.",
+            "4. Ornaments are handed to you in person, tested using non-destructive German XRF, and the surplus balance is paid to you immediately via IMPS/RTGS or cash."
+          ],
+          helpline: "+91 91810 54326",
+          branches: ["Guwahati Club", "Adabari", "Goalpara"]
+        };
+      }
+    }
+  ];
+
+  // Expose on window for in-browser inspection
+  window.__webMcpTools = mcpTools;
+
+  // Polyfill / support navigator.modelContext.registerTool
+  if (typeof navigator !== 'undefined') {
+    if (!navigator.modelContext) {
+      navigator.modelContext = {
+        _tools: new Map(),
+        registerTool: function(tool) {
+          if (tool && tool.name) {
+            this._tools.set(tool.name, tool);
+          }
+        },
+        getTools: function() {
+          return Array.from(this._tools.values());
+        }
+      };
+    }
+
+    if (typeof navigator.modelContext.registerTool === 'function') {
+      mcpTools.forEach(tool => {
+        try {
+          navigator.modelContext.registerTool(tool);
+        } catch (e) {
+          // ignore already registered
+        }
+      });
+    }
+  }
+})();
+
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initApp);
 } else {

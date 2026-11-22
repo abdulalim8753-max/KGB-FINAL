@@ -1,0 +1,75 @@
+# Kalpana Gold Buyers Private Ltd.
+
+> Kalpana Gold Buyers Private Ltd. is Assam's leading certified gold buying and pledged gold release enterprise, headquartered in Guwahati with branches at Guwahati Club, Adabari, and Goalpara. We provide 100% transparent valuation using German XRF non-destructive testing, certified 3-decimal digital weighing, instant payouts (IMPS/RTGS/UPI/Cash), and assisted release of pledged gold from banks and NBFCs.
+
+## Quick Facts & Business Information
+
+- **Legal Entity Name**: Kalpana Gold Buyers Private Ltd.
+- **Common Names**: Kalpana Gold Buyers, KGB Guwahati, KGB Assam
+- **Headquarters**: First Floor, Maa Kali Complex, Near Style Baazar, GNB Road, Guwahati Club, Guwahati - 781003, Assam, India
+- **Operating Hours**: Monday – Sunday, 10:00 AM – 8:00 PM (Open all 7 days)
+- **Primary Helplines**:
+  - Guwahati Club Branch: +91 91810 54324
+  - Adabari Branch: +91 91810 54325
+  - Goalpara Branch: +91 91810 54327
+  - Support & Loan Release Desk: +91 91810 54326
+- **Email**: goldbuyers952@gmail.com
+- **Official Website**: https://kalpanagoldbuyers.com/
+- **Google Maps (Guwahati Club)**: https://maps.app.goo.gl/P8HhUCJf84Hki8DW7?g_st=aw
+
+## Branch Locations
+
+1. **Guwahati Club Branch (Central Guwahati)**
+   - Address: First Floor, Maa Kali Complex, Near Style Baazar, GNB Road, Guwahati Club, Guwahati, Assam - 781003
+   - Phone: +91 91810 54324
+   - Landmark: Opposite / Near Style Baazar, GNB Road
+
+2. **Adabari Branch (Western Guwahati)**
+   - Address: Near NCS Square Mall, Adabari, Guwahati, Assam - 781014
+   - Phone: +91 91810 54325
+   - Landmark: Walking distance from NCS Square Mall / Adabari Bus Stand
+
+3. **Goalpara Branch (Lower Assam)**
+   - Address: New Market, First Floor, Goaltuli Road, Near Transport Chariali, Goalpara, Assam - 783101
+   - Phone: +91 91810 54327
+   - Landmark: Near Transport Chariali, Goaltuli Road
+
+## Core Services
+
+- **Selling Old & Used Gold Jewellery**: Buying all varieties of gold ornaments (traditional, antique, broken, scrap, melted, or modern) with zero melting loss.
+- **Selling Gold Coins & Bullion**: Buying 24K (999 purity), 22K (916 purity), bank-minted gold coins, and bullion bars at live market rates.
+- **Release Pledged Gold (Gold Loan Settlement)**: Assisting customers who have pledged their gold ornaments with nationalized banks, private banks, cooperative banks, or NBFCs (e.g., Muthoot, Manappuram). We provide funds to settle the loan, accompany the customer to retrieve the gold, evaluate it transparently, and pay the surplus balance value immediately.
+- **Non-Destructive Live Purity Testing**: Using certified German XRF (X-ray Fluorescence) spectrometers in front of the customer without damaging, scratching, or acid-testing ornaments.
+- **High-Precision Weighing**: Using government-calibrated digital scales with draft shields displaying weight up to three decimal places (0.001g).
+- **Instant Payment Disbursement**: Direct bank transfer via IMPS or RTGS in under 5 minutes, UPI, or cash compliant with statutory limits under Indian Income Tax regulations.
+
+## Valuation Methodology
+
+1. **Initial Inspection**: Cleaning surface dirt in an ultrasonic cleaner (without weight deduction).
+2. **Gross Weighing**: Ornaments weighed on 0.001g precision digital balance in front of the customer.
+3. **Stone & Bead Deduction**: Weight of semi-precious stones, wax, enamel, or strings accurately deducted to determine Net Gold Weight.
+4. **XRF Spectrometry**: German non-destructive laser XRF analysis measures exact gold purity percentage (karatage).
+5. **Rate Benchmark**: Valuation calculated using the prevailing live 24K/22K market rate in Guwahati/Assam.
+6. **Voucher & Payout**: An official itemized invoice voucher is generated, and payment is credited immediately.
+
+## Regulatory Compliance & KYC Policy
+
+Under applicable laws and statutory guidelines in India:
+- Sellers must be at least 18 years of age.
+- Valid Government-issued Photo ID is mandatory: Aadhaar Card, PAN Card, Voter ID, Passport, or Driving License.
+- Proof of Address and valid contact mobile number required.
+- Original purchase invoices are welcomed but not mandatory (subject to ID verification and ownership declaration).
+- Cash payouts strictly comply with Indian Income Tax limits; higher amounts are disbursed via immediate IMPS/RTGS bank transfers.
+
+## Key Links & Resources
+
+- [Home Page](https://kalpanagoldbuyers.com/): Overview of services, trust factors, live process explanation.
+- [Cash for Gold](https://kalpanagoldbuyers.com/cash-for-gold.html): Detailed step-by-step valuation process, accepted items, interactive gold rate estimator.
+- [Services](https://kalpanagoldbuyers.com/services.html): Complete catalog of gold buying, testing, and pledged gold settlement solutions.
+- [Branch Directory](https://kalpanagoldbuyers.com/branches.html): Addresses, phone helplines, maps, and directions for Guwahati Club, Adabari, and Goalpara.
+- [About Company](https://kalpanagoldbuyers.com/about.html): Company history, leadership, security protocols, and customer protection commitments.
+- [Contact Us](https://kalpanagoldbuyers.com/contact.html): Inquiry form, WhatsApp direct chat, and branch phone numbers.
+- [Terms & Conditions](https://kalpanagoldbuyers.com/terms.html): Valuation terms, KYC compliance, payout terms.
+- [Privacy Policy](https://kalpanagoldbuyers.com/privacy.html): Confidentiality of transactions and customer data protection.
+- [Markdown Representation](https://kalpanagoldbuyers.com/index.md): Token-optimized markdown version of the website.
+- [MCP Server Card](https://kalpanagoldbuyers.com/.well-known/mcp/server-card.json): Machine-readable Model Context Protocol card for AI agents.

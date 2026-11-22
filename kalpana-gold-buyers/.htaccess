@@ -9,8 +9,8 @@
   Options -Indexes
 </IfModule>
 
-# 2. BLOCK ACCESS TO HIDDEN AND SENSITIVE FILES (Apache 2.2 & 2.4 compatible)
-<FilesMatch "^\.">
+# 2. BLOCK ACCESS TO HIDDEN AND SENSITIVE FILES (Exempting RFC 8615 .well-known for MCP & Agents)
+<FilesMatch "^\.(?!well-known)">
   <IfModule mod_authz_core.c>
     Require all denied
   </IfModule>
@@ -30,17 +30,37 @@
   </IfModule>
 </FilesMatch>
 
-# 3. AUTOMATIC HTTPS ENFORCEMENT
+# 3. REWRITE ENGINE (HTTPS ENFORCEMENT & AGENT MARKDOWN CONTENT NEGOTIATION)
 <IfModule mod_rewrite.c>
   RewriteEngine On
+
+  # Exempt RFC 8615 .well-known from rewrite rules
+  RewriteRule ^\.well-known/ - [L]
+
+  # Automatic HTTPS Enforcement
   RewriteCond %{HTTPS} off
   RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # Content Negotiation: Serve index.md when agent requests text/markdown on root or index.html
+  RewriteCond %{HTTP:Accept} text/markdown [NC]
+  RewriteCond %{REQUEST_URI} ^/(index\.html)?$ [NC]
+  RewriteRule ^.*$ /index.md [L]
 </IfModule>
 
 # 4. HTTP SECURITY & CACHE HEADERS (CWE & OWASP Compliance)
 <IfModule mod_headers.c>
   # HTTP Strict Transport Security (HSTS - RFC 6797 compliant, HTTPS only)
   Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" env=HTTPS
+
+  # RFC 8288 Link Headers Advertising llms.txt and Markdown representation to Agents
+  Header always set Link "</llms.txt>; rel=\"describedby\"; type=\"text/plain\", </index.md>; rel=\"alternate\"; type=\"text/markdown\""
+
+  # Cross-Origin Resource Sharing (CORS) for Agent Context & MCP Server Card
+  <FilesMatch "(server-card\.json|llms\.txt|index\.md)$">
+    Header always set Access-Control-Allow-Origin "*"
+    Header always set Access-Control-Allow-Methods "GET, OPTIONS"
+    Header always set Access-Control-Allow-Headers "Accept, Content-Type"
+  </FilesMatch>
 
   # Prevent MIME-type Sniffing
   Header always set X-Content-Type-Options "nosniff"
@@ -129,5 +149,12 @@
   ExpiresByType application/font-woff2 "access plus 1 year"
 </IfModule>
 
-# 7. UTF-8 ENCODING
+# 7. UTF-8 ENCODING & MIME TYPES
 AddDefaultCharset UTF-8
+
+<IfModule mod_mime.c>
+  AddType text/markdown .md
+  AddType application/json .json
+  AddType text/plain .txt
+  AddType application/xml .xml
+</IfModule>
