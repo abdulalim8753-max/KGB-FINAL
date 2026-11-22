@@ -610,7 +610,8 @@ const initApp = () => {
   if (branchSwitchBtns.length > 0 && branchMapIframe) {
     const mapUrls = {
       'guwahati-club': 'https://maps.google.com/maps?q=Guwahati+Club+GNB+Road+Guwahati+Assam&t=&z=16&ie=UTF8&iwloc=&output=embed',
-      'adabari': 'https://maps.google.com/maps?q=NCS+Square+Mall+Adabari+Guwahati+Assam&t=&z=16&ie=UTF8&iwloc=&output=embed'
+      'adabari': 'https://maps.google.com/maps?q=NCS+Square+Mall+Adabari+Guwahati+Assam&t=&z=16&ie=UTF8&iwloc=&output=embed',
+      'goalpara': 'https://maps.google.com/maps?q=New+Market+Goaltuli+Road+Transport+Chariali+Goalpara+Assam+783101&t=&z=16&ie=UTF8&iwloc=&output=embed'
     };
 
     branchSwitchBtns.forEach(btn => {
