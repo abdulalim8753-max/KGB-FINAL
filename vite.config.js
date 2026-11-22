@@ -17,7 +17,9 @@ export default defineConfig({
         branches: resolve(__dirname, 'branches.html'),
         gallery: resolve(__dirname, 'gallery.html'),
         about: resolve(__dirname, 'about.html'),
-        contact: resolve(__dirname, 'contact.html')
+        contact: resolve(__dirname, 'contact.html'),
+        terms: resolve(__dirname, 'terms.html'),
+        privacy: resolve(__dirname, 'privacy.html')
       }
     }
   },

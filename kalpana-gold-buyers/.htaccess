@@ -33,6 +33,7 @@
 # 3. REWRITE ENGINE (HTTPS ENFORCEMENT & AGENT MARKDOWN CONTENT NEGOTIATION)
 <IfModule mod_rewrite.c>
   RewriteEngine On
+  RewriteBase /
 
   # Exempt RFC 8615 .well-known from rewrite rules
   RewriteRule ^\.well-known/ - [L]
@@ -53,6 +54,7 @@
   Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" env=HTTPS
 
   # RFC 8288 Link Headers Advertising llms.txt and Markdown representation to Agents
+  Header set Link "</llms.txt>; rel=\"describedby\"; type=\"text/plain\", </index.md>; rel=\"alternate\"; type=\"text/markdown\""
   Header always set Link "</llms.txt>; rel=\"describedby\"; type=\"text/plain\", </index.md>; rel=\"alternate\"; type=\"text/markdown\""
 
   # Cross-Origin Resource Sharing (CORS) for Agent Context & MCP Server Card

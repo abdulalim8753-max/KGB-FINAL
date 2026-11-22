@@ -18,10 +18,110 @@
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
   <meta name="author" content="Kalpana Gold Buyers Private Ltd.">
 
-  <!-- Canonical URL -->
+  <!-- Canonical URL & Agent Discovery -->
   <link rel="canonical" href="https://kalpanagoldbuyers.com/">
   <link rel="describedby" type="text/plain" href="https://kalpanagoldbuyers.com/llms.txt">
   <link rel="alternate" type="text/markdown" href="https://kalpanagoldbuyers.com/index.md" title="Markdown Content for AI Agents">
+
+  <!-- WebMCP (Web Model Context Protocol) In-Browser Agent Tools -->
+  <script>
+    (function initWebMCP() {
+      var tools = [
+        {
+          name: "estimate_gold_value",
+          description: "Estimate gross and net cash payout for selling gold ornaments, coins, or bullion in Guwahati and Goalpara, Assam based on karat purity and gross weight in grams.",
+          inputSchema: {
+            type: "object",
+            properties: {
+              weight_grams: { type: "number", description: "Gross weight of gold item in grams (e.g. 10.5)" },
+              karat: { type: "integer", enum: [24, 22, 20, 18, 14, 10, 9], description: "Gold purity in Karats" }
+            },
+            required: ["weight_grams", "karat"]
+          },
+          execute: async function(params) {
+            var weight = parseFloat(params && params.weight_grams) || 0;
+            var karat = parseInt(params && params.karat, 10) || 22;
+            var ratios = { 24: 0.999, 22: 0.916, 20: 0.833, 18: 0.750, 14: 0.585, 10: 0.417, 9: 0.375 };
+            var ratio = ratios[karat] || 0.916;
+            var base24KRate = 7200;
+            var pureGold = weight * ratio;
+            var gross = Math.round(pureGold * base24KRate);
+            var net = Math.round(gross * 0.98);
+            return {
+              grossWeightGrams: weight,
+              karat: karat,
+              purityPercentage: (ratio * 100).toFixed(1) + "%",
+              grossValuation: "₹" + gross.toLocaleString("en-IN"),
+              estimatedPayout: "₹" + net.toLocaleString("en-IN"),
+              branches: "Guwahati Club (+91 91810 54324), Adabari (+91 91810 54325), Goalpara (+91 91810 54327)"
+            };
+          }
+        },
+        {
+          name: "get_branch_locations",
+          description: "Lookup physical showroom addresses, phone helplines, opening hours, and Google Maps links for Kalpana Gold Buyers in Assam.",
+          inputSchema: {
+            type: "object",
+            properties: {
+              branch: { type: "string", enum: ["all", "guwahati-club", "adabari", "goalpara"], description: "Branch ID or 'all'" }
+            }
+          },
+          execute: async function(params) {
+            return {
+              branches: [
+                { id: "guwahati-club", name: "Guwahati Club Branch", address: "First Floor, Maa Kali Complex, Near Style Baazar, GNB Road, Guwahati - 781003", phone: "+91 91810 54324", map: "https://maps.app.goo.gl/P8HhUCJf84Hki8DW7?g_st=aw" },
+                { id: "adabari", name: "Adabari Branch", address: "Adabari, Near NCS Square Mall, Guwahati - 781014, Assam", phone: "+91 91810 54325", map: "https://maps.google.com/maps?q=NCS+Square+Mall+Adabari+Guwahati" },
+                { id: "goalpara", name: "Goalpara Branch", address: "New Market, First Floor, Goaltuli Road, Near Transport Chariali, Goalpara - 783101, Assam", phone: "+91 91810 54327", map: "https://maps.google.com/maps?q=New+Market+Goaltuli+Road+Transport+Chariali+Goalpara" }
+              ]
+            };
+          }
+        },
+        {
+          name: "inquire_pledged_gold_release",
+          description: "Assistance to release pledged gold from any bank or NBFC in Assam and receive surplus cash immediately.",
+          inputSchema: {
+            type: "object",
+            properties: {
+              loanAmount: { type: "number", description: "Approximate loan balance in INR" },
+              approxGoldWeightGrams: { type: "number", description: "Approximate gold weight pledged in grams" }
+            },
+            required: ["loanAmount", "approxGoldWeightGrams"]
+          },
+          execute: async function(params) {
+            return {
+              steps: [
+                "1. Call Pledged Gold Desk (+91 91810 54326).",
+                "2. Share pledge receipt/pawn ticket.",
+                "3. Representative accompanies you to settle loan dues with bank.",
+                "4. Non-destructive XRF test & instant balance cash payout."
+              ],
+              helpline: "+91 91810 54326"
+            };
+          }
+        }
+      ];
+
+      window.__webMcpTools = tools;
+      if (typeof navigator !== 'undefined') {
+        if (!navigator.modelContext) {
+          navigator.modelContext = {
+            _tools: new Map(),
+            registerTool: function(tool) {
+              if (tool && tool.name) this._tools.set(tool.name, tool);
+            },
+            getTools: function() {
+              return Array.from(this._tools.values());
+            }
+          };
+        }
+        if (typeof navigator.modelContext.registerTool === 'function') {
+          tools.forEach(function(t) {
+            try { navigator.modelContext.registerTool(t); } catch(e) {}
+          });
+        }
+      }
+    })();
+  </script>
 
   <!-- Geo-Targeting & Local SEO Meta Tags for Guwahati & Assam -->
   <meta name="geo.region" content="IN-AS">
