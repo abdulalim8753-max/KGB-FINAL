@@ -677,7 +677,7 @@ const initApp = () => {
           contactHelplines: {
             guwahatiClub: "+91 91810 54324",
             adabari: "+91 91810 54325",
-            goalpara: "+91 91810 54327",
+            goalpara: "+91 91810 54325",
             loanReleaseDesk: "+91 91810 54326"
           }
         };
@@ -718,7 +718,7 @@ const initApp = () => {
             id: "goalpara",
             name: "Goalpara Branch (Lower Assam)",
             address: "New Market, First Floor, Goaltuli Road, Near Transport Chariali, Goalpara - 783101, Assam",
-            phone: "+91 91810 54327",
+            phone: "+91 91810 54325",
             hours: "10:00 AM – 8:00 PM (Monday to Sunday, All 7 Days)",
             googleMap: "https://maps.google.com/maps?q=New+Market+Goaltuli+Road+Transport+Chariali+Goalpara+Assam+783101"
           }

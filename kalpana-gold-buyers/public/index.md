@@ -8,7 +8,7 @@
 
 - **Guwahati Club Branch**: First Floor, Maa Kali Complex, Near Style Baazar, GNB Road, Guwahati Club, Guwahati - 781003 | Helpline: [+91 91810 54324](tel:+919181054324) | [Google Maps](https://maps.app.goo.gl/P8HhUCJf84Hki8DW7?g_st=aw)
 - **Adabari Branch**: Near NCS Square Mall, Adabari, Guwahati - 781014, Assam | Helpline: [+91 91810 54325](tel:+919181054325)
-- **Goalpara Branch**: New Market, First Floor, Goaltuli Road, Near Transport Chariali, Goalpara - 783101, Assam | Helpline: [+91 91810 54327](tel:+919181054327)
+- **Goalpara Branch**: New Market, First Floor, Goaltuli Road, Near Transport Chariali, Goalpara - 783101, Assam | Helpline: [+91 91810 54325](tel:+919181054325)
 - **Support & Loan Release Desk**: [+91 91810 54326](tel:+919181054326) | Email: [goldbuyers952@gmail.com](mailto:goldbuyers952@gmail.com)
 - **Hours**: Monday to Sunday: 10:00 AM – 8:00 PM (All 7 Days)
 
