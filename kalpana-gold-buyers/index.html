@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -387,8 +387,8 @@
   <link rel="preload" as="image" href="images/hero.jpg" media="(min-width: 769px)" fetchpriority="high">
 
   <!-- Google Fonts (Optimized weights & non-render-blocking for instant FCP) -->
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Cinzel:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Cinzel:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
 
   <!-- Font Awesome Icons (Non-render-blocking for instant paint) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
@@ -463,7 +463,7 @@
   </style>
 
   <!-- Full Stylesheet -->
-  <link rel="stylesheet" href="css/style.min.css?v=2.2">
+  <link rel="stylesheet" href="css/style.css?v=3.0">
 
   <script>
     (function() {
@@ -561,6 +561,16 @@
             <i class="fa-brands fa-whatsapp"></i> WhatsApp
           </a>
 
+          <!-- Mobile Direct Header Actions -->
+          <div class="mobile-header-actions">
+            <a href="tel:+919181054324" class="header-icon-btn header-icon-call" aria-label="Direct Phone Call">
+              <i class="fa-solid fa-phone"></i>
+            </a>
+            <a href="https://wa.me/919181054325?text=Hello%20Kalpana%20Gold%20Buyers,%20I%20would%20like%20to%20inquire%20about%20selling%20gold." target="_blank" rel="noopener noreferrer" class="header-icon-btn header-icon-whatsapp" aria-label="Direct WhatsApp Message">
+              <i class="fa-brands fa-whatsapp"></i>
+            </a>
+          </div>
+
           <!-- Hamburger Button for Mobile -->
           <button class="hamburger-btn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-nav" onclick="window.toggleMobileNav && window.toggleMobileNav(event)">
             <span class="hamburger-line"></span>
@@ -611,64 +621,154 @@
   </aside>
 
   <!-- 4. HERO SECTION -->
-    <section class="hero-section">
-    <picture class="hero-bg-picture">
-      <source media="(max-width: 768px)" srcset="images/hero-mobile.jpg">
-      <img src="images/hero.jpg" alt="Kalpana Gold Buyers Hero Background" class="hero-bg-img" fetchpriority="high" decoding="async" width="1280" height="714">
-    </picture>
-    <div class="hero-overlay"></div>
+  <section class="hero-section">
     <div class="container">
       <div class="hero-content">
-        <div class="section-tag">
+        <div class="hero-eyebrow-tag">
           <i class="fa-solid fa-shield-halved"></i> Govt. Compliant &bull; 100% Transparent
         </div>
         <h1 class="hero-title">
-          Best Gold Buyers in <span class="gold-gradient-text">Guwahati, Assam</span>
+          Sell Your Gold.<br>
+          <span class="gold-text">Get Instant Cash.</span>
         </h1>
+        <div class="hero-location-subhead">
+          <i class="fa-solid fa-location-dot" style="color: var(--color-brand);"></i>
+          <span>Trusted Gold Buyer in Guwahati &amp; Assam</span>
+        </div>
         <p class="hero-subtitle">
-          Turn your old, used, broken, or pledged gold into instant cash or direct bank transfer. Non-destructive German XRF purity testing, 0% melting loss, and the highest live market valuation at Guwahati Club &amp; Adabari.
+          Turn your old, used, broken, or pledged gold into instant cash or direct bank transfer. 100% non-destructive German XRF purity testing you can watch live, 0% melting loss, and the highest live market valuation at Guwahati Club, Adabari &amp; Goalpara.
         </p>
 
         <div class="hero-cta-group">
-          <a href="cash-for-gold.html" class="btn btn-primary btn-lg">
-            <i class="fa-solid fa-coins"></i> Sell Your Gold
+          <a href="#valuation-lead-form" class="btn btn-primary btn-lg">
+            <i class="fa-solid fa-calculator"></i> Get Gold Valuation <i class="fa-solid fa-arrow-right"></i>
           </a>
-          <a href="services.html" class="btn btn-secondary btn-lg">
-            <i class="fa-solid fa-gem"></i> Explore Our Services
+          <a href="tel:+919181054324" class="btn btn-secondary btn-lg">
+            <i class="fa-solid fa-phone"></i> Call Now
           </a>
         </div>
 
-        <!-- Trust Highlights -->
+        <!-- 4 Quick Benefit Badges -->
         <div class="hero-badges-grid">
           <div class="hero-badge-item">
-            <i class="fa-solid fa-microscope hero-badge-icon"></i>
-            <div class="hero-badge-text">
-              <h4>Live Purity Testing</h4>
-              <p>Your gold is tested in front of your eyes using certified technology</p>
+            <div class="hero-badge-icon-box">
+              <i class="fa-solid fa-indian-rupee-sign"></i>
             </div>
+            <h4>Best Market Price</h4>
           </div>
           <div class="hero-badge-item">
-            <i class="fa-solid fa-scale-balanced hero-badge-icon"></i>
-            <div class="hero-badge-text">
-              <h4>Accurate Weighing</h4>
-              <p>Certified 3-decimal digital scale</p>
+            <div class="hero-badge-icon-box">
+              <i class="fa-solid fa-shield-halved"></i>
             </div>
+            <h4>100% Transparency</h4>
           </div>
           <div class="hero-badge-item">
-            <i class="fa-solid fa-bolt-lightning hero-badge-icon"></i>
-            <div class="hero-badge-text">
-              <h4>Instant Payment</h4>
-              <p>IMPS, RTGS, UPI or Cash</p>
+            <div class="hero-badge-icon-box">
+              <i class="fa-solid fa-bolt-lightning"></i>
             </div>
+            <h4>Instant Payment</h4>
           </div>
           <div class="hero-badge-item">
-            <i class="fa-solid fa-file-invoice-dollar hero-badge-icon"></i>
-            <div class="hero-badge-text">
-              <h4>Release Pledged Gold</h4>
-              <p>Bank &amp; NBFC loan release &amp; instant balance cash</p>
+            <div class="hero-badge-icon-box">
+              <i class="fa-solid fa-microscope"></i>
             </div>
+            <h4>Live XRF Testing</h4>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4.1 FLOATING TRUST STAT STRIP -->
+  <div class="container stat-strip-container">
+    <div class="stat-strip">
+      <div class="stat-strip-item">
+        <i class="fa-solid fa-users stat-strip-icon"></i>
+        <div class="stat-strip-text">
+          <h4>10,000+</h4>
+          <p>Happy Customers</p>
+        </div>
+      </div>
+      <div class="stat-strip-item">
+        <i class="fa-solid fa-shop stat-strip-icon"></i>
+        <div class="stat-strip-text">
+          <h4>3+</h4>
+          <p>Branches in Assam</p>
+        </div>
+      </div>
+      <div class="stat-strip-item">
+        <i class="fa-solid fa-certificate stat-strip-icon"></i>
+        <div class="stat-strip-text">
+          <h4>100%</h4>
+          <p>Live Purity Testing</p>
+        </div>
+      </div>
+      <div class="stat-strip-item">
+        <i class="fa-solid fa-award stat-strip-icon"></i>
+        <div class="stat-strip-text">
+          <h4>0%</h4>
+          <p>Melting Loss</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4.2 LEAD VALUATION SECTION -->
+  <section id="valuation-lead-form" class="valuation-section">
+    <div class="container">
+      <div class="valuation-card">
+        <div class="valuation-header">
+          <span class="quick-tag">Quick &amp; Easy</span>
+          <h2 class="valuation-title">Get Your Gold Valued</h2>
+          <p class="valuation-desc">
+            Share a few details and our expert gold evaluation team will connect with you immediately with the best live rate and instant cash valuation.
+          </p>
+          <div class="valuation-pills">
+            <span class="v-pill"><i class="fa-solid fa-circle-check"></i> Free Valuation</span>
+            <span class="v-pill"><i class="fa-solid fa-circle-check"></i> 100% Transparent</span>
+            <span class="v-pill"><i class="fa-solid fa-circle-check"></i> No Obligation</span>
+          </div>
+        </div>
+
+        <form class="valuation-form-grid" onsubmit="event.preventDefault(); window.handleValuationSubmit ? window.handleValuationSubmit(event) : alert('Thank you! Our valuation executive will call you within 15 minutes.');">
+          <div class="v-field">
+            <label for="v-name">Full Name</label>
+            <input type="text" id="v-name" class="v-input" placeholder="Enter your full name" required>
+          </div>
+          <div class="v-field">
+            <label for="v-phone">Mobile Number</label>
+            <input type="tel" id="v-phone" class="v-input" placeholder="10-digit mobile number" pattern="[0-9]{10}" required>
+          </div>
+          <div class="v-field">
+            <label for="v-branch">Select Nearest Branch</label>
+            <select id="v-branch" class="v-select" required>
+              <option value="" disabled selected>Select your preferred branch</option>
+              <option value="Guwahati Club">Guwahati Club Branch (Central Guwahati)</option>
+              <option value="Adabari">Adabari Branch (West Guwahati)</option>
+              <option value="Goalpara">Goalpara Branch (New Market, Goaltuli Road)</option>
+            </select>
+          </div>
+          <div class="v-field">
+            <label for="v-service">Required Service</label>
+            <select id="v-service" class="v-select" required>
+              <option value="Sell Old Gold" selected>Sell Old / Scrap Jewellery</option>
+              <option value="Release Pledged Gold">Release Pledged Gold (Bank/NBFC Loan)</option>
+              <option value="Live Purity Testing">Live German XRF Testing &amp; Appraisal</option>
+              <option value="Cash for Gold Coins">Sell Gold Coins / Bars</option>
+            </select>
+          </div>
+          <div class="v-field" style="grid-column: 1 / -1;">
+            <label for="v-weight">Approximate Gold Weight (Grams)</label>
+            <input type="number" id="v-weight" class="v-input" placeholder="e.g. 10.5 grams" step="0.1" min="0.5" required>
+          </div>
+
+          <button type="submit" class="v-submit-btn">
+            <i class="fa-solid fa-bolt"></i> Get Free Valuation Now <i class="fa-solid fa-arrow-right"></i>
+          </button>
+          <div class="v-terms-note">
+            <i class="fa-solid fa-lock"></i> Your information is strictly confidential and protected under our privacy policy.
+          </div>
+        </form>
       </div>
     </div>
   </section>
@@ -1522,6 +1622,23 @@
       </div>
     </div>
   </footer>
+
+  <!-- Sticky Mobile Bottom Bar (Meena Gold Buyer Style) -->
+  <nav class="mobile-cta-bar" aria-label="Quick Mobile Actions">
+    <a href="tel:+919181054324" class="mobile-cta-call" aria-label="Call Guwahati Club Branch">
+      <i class="fa-solid fa-phone"></i>
+      <span>Call Now</span>
+    </a>
+    <a href="https://wa.me/919181054325?text=Hello%20Kalpana%20Gold%20Buyers,%20I%20would%20like%20to%20get%20a%20valuation%20for%20my%20gold."
+       target="_blank" rel="noopener noreferrer" class="mobile-cta-whatsapp" aria-label="Chat on WhatsApp">
+      <i class="fa-brands fa-whatsapp"></i>
+      <span>WhatsApp</span>
+    </a>
+    <a href="cash-for-gold.html" class="mobile-cta-gold" aria-label="Sell Your Gold">
+      <i class="fa-solid fa-coins"></i>
+      <span>Sell Your Gold</span>
+    </a>
+  </nav>
 
   <!-- Floating Action Buttons -->
   <div class="floating-actions" aria-label="Quick Contact Actions">

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -168,9 +168,9 @@
   <!-- Fonts & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Cinzel:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="css/style.css?v=2.2">
+  <link rel="stylesheet" href="css/style.css?v=3.0">
 </head>
 <body>
 
@@ -208,10 +208,51 @@
           <a href="https://wa.me/919181054325" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">
             <i class="fa-brands fa-whatsapp"></i> WhatsApp
           </a>
+
+          <!-- Mobile Direct Header Actions -->
+          <div class="mobile-header-actions">
+            <a href="tel:+919181054324" class="header-icon-btn header-icon-call" aria-label="Direct Phone Call">
+              <i class="fa-solid fa-phone"></i>
+            </a>
+            <a href="https://wa.me/919181054325?text=Hello%20Kalpana%20Gold%20Buyers,%20I%20would%20like%20to%20inquire%20about%20selling%20gold." target="_blank" rel="noopener noreferrer" class="header-icon-btn header-icon-whatsapp" aria-label="Direct WhatsApp Message">
+              <i class="fa-brands fa-whatsapp"></i>
+            </a>
+          </div>
+
+          <button class="hamburger-btn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-nav" onclick="window.toggleMobileNav && window.toggleMobileNav(event)">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
         </div>
       </nav>
     </div>
   </header>
+
+  <!-- Mobile Nav -->
+  <div class="mobile-nav-backdrop" onclick="window.closeMobileNav && window.closeMobileNav(event)"></div>
+  <aside id="mobile-nav" class="mobile-nav" aria-label="Mobile Navigation">
+    <div>
+      <div class="mobile-nav-header">
+        <a href="index.html" class="brand-logo">
+          <img src="images/logo.png" alt="Kalpana Gold Buyers" class="brand-logo-img" loading="lazy" decoding="async"></a>
+        <button class="mobile-nav-close" aria-label="Close menu" onclick="window.closeMobileNav && window.closeMobileNav(event)"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <ul class="mobile-nav-links">
+        <li><a href="index.html" class="nav-link"><span>Home</span> <i class="fa-solid fa-chevron-right"></i></a></li>
+        <li><a href="services.html" class="nav-link"><span>Services</span> <i class="fa-solid fa-chevron-right"></i></a></li>
+        <li><a href="cash-for-gold.html" class="nav-link"><span>Cash for Gold</span> <i class="fa-solid fa-chevron-right"></i></a></li>
+        <li><a href="branches.html" class="nav-link"><span>Branches</span> <i class="fa-solid fa-chevron-right"></i></a></li>
+        <li><a href="gallery.html" class="nav-link"><span>Gallery</span> <i class="fa-solid fa-chevron-right"></i></a></li>
+        <li><a href="about.html" class="nav-link"><span>About Us</span> <i class="fa-solid fa-chevron-right"></i></a></li>
+        <li><a href="contact.html" class="nav-link"><span>Contact Us</span> <i class="fa-solid fa-chevron-right"></i></a></li>
+      </ul>
+    </div>
+    <div class="mobile-nav-cta">
+      <a href="tel:+919181054324" class="btn btn-call btn-block"><i class="fa-solid fa-phone"></i> Call +91 91810 54324</a>
+      <a href="https://wa.me/919181054325" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-block"><i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp</a>
+    </div>
+  </aside>
 
   <!-- Hero -->
   <section class="page-hero">
@@ -345,5 +386,21 @@
   </footer>
 
   <script src="js/script.js?v=2.2" defer></script>
+  <!-- Sticky Mobile Bottom Bar (Meena Gold Buyer Style) -->
+  <nav class="mobile-cta-bar" aria-label="Quick Mobile Actions">
+    <a href="tel:+919181054324" class="mobile-cta-call" aria-label="Call Guwahati Club Branch">
+      <i class="fa-solid fa-phone"></i>
+      <span>Call Now</span>
+    </a>
+    <a href="https://wa.me/919181054325?text=Hello%20Kalpana%20Gold%20Buyers,%20I%20would%20like%20to%20get%20a%20valuation%20for%20my%20gold."
+       target="_blank" rel="noopener noreferrer" class="mobile-cta-whatsapp" aria-label="Chat on WhatsApp">
+      <i class="fa-brands fa-whatsapp"></i>
+      <span>WhatsApp</span>
+    </a>
+    <a href="cash-for-gold.html" class="mobile-cta-gold" aria-label="Sell Your Gold">
+      <i class="fa-solid fa-coins"></i>
+      <span>Sell Your Gold</span>
+    </a>
+  </nav>
 </body>
 </html>
